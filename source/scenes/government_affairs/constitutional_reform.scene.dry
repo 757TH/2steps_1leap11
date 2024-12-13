@@ -96,7 +96,7 @@ achievement: verfassungsreform
 We have successfully passed a constitutional amendment to ban votes of no confidence when a new government cannot be formed. Hopefully this increases the stability of our governments.
 
 @presidential_powers
-subtitle: The president can no longer dissolve the Reichstag at will, or call a *Reichsexekution* on state governments.
+subtitle: The president can no longer dissolve the Reichstag at will, or call a *Reichsexekution* on state governments. Additionally, a term limit on presidents will be imposed.
 on-arrival: {!
 Q.reform_support = Q.spd_normalized + Q.ddp_normalized + Q.kpd_normalized;
 if (Q.z_relation > 49 && (Q.president == "Hindenburg" || Q.president == "Eckener")) {
@@ -107,7 +107,7 @@ if (Q.z_relation > 49 && (Q.president == "Hindenburg" || Q.president == "Eckener
 !}
 view-if: presidential_powers = 0
 
-The wide-ranging presidential powers promised by the constitution are a potential gateway to authoritarianism. Thus, we can support reforms that limit the powers of the president, ending his power to unilaterally terminate an elected government and to remove state governments.
+The wide-ranging presidential powers promised by the constitution are a potential gateway to authoritarianism. Thus, we can support reforms that limit the powers of the president, ending his power to unilaterally terminate an elected government and to remove state governments. We should also add a term limit on presidents, limiting them to two seven-year terms.
 
 The KPD is in favor of this reform, having been victims of the *Reichsexekution* in the past (when KPD-supported state governments in Thuringia and Saxony were removed). The democrats of the DDP also support this. [? if president == "Hindenburg": However, the opposition from conservatives is vehement, as they see a reduction in presidential powers as disrespectful to Hindenburg. ?] [? if z_relation <= 49 and president == "Hindenburg" : Thus, the Center Party has been influenced to oppose these reforms. ?] [? if z_relation > 49 and president == "Hindenburg" : Despite this, the Center Party supports the proposed reform. ?] [? if president == "Braun" : The Center Party supports this reform. ?]
 
