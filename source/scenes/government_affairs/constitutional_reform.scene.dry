@@ -25,6 +25,7 @@ A constitutional reform requires either a two-thirds supermajority in the Reichs
 - @vote_threshold: Change the vote threshold.
 - @constructive_vonc: Ban non-constructive votes of no confidence.
 - @presidential_powers: Reduce presidential powers.
+- @womens_rights: Increase rights for women.
 - @as_is: Do not pursue constitutional reform.
 - @easy_discard
 #- @constitutional_bans: Allow the banning of anti-constitutional parties.
@@ -107,7 +108,7 @@ if (Q.z_relation > 49 && (Q.president == "Hindenburg" || Q.president == "Eckener
 !}
 view-if: presidential_powers = 0
 
-The wide-ranging presidential powers promised by the constitution are a potential gateway to authoritarianism. Thus, we can support reforms that limit the powers of the president, ending his power to unilaterally terminate an elected government and to remove state governments. We should also add a term limit on presidents, limiting them to two seven-year terms.
+The wide-ranging presidential powers promised by the constitution are a potential gateway to authoritarianism. Thus, we can support reforms that limit the powers of the president, ending his power to unilaterally terminate an elected government and to remove state governments. A term limit on presidents is also proposed, limiting them to two seven-year terms.
 
 The KPD is in favor of this reform, having been victims of the *Reichsexekution* in the past (when KPD-supported state governments in Thuringia and Saxony were removed). The democrats of the DDP also support this. [? if president == "Hindenburg": However, the opposition from conservatives is vehement, as they see a reduction in presidential powers as disrespectful to Hindenburg. ?] [? if z_relation <= 49 and president == "Hindenburg" : Thus, the Center Party has been influenced to oppose these reforms. ?] [? if z_relation > 49 and president == "Hindenburg" : Despite this, the Center Party supports the proposed reform. ?] [? if president == "Braun" : The Center Party supports this reform. ?]
 
@@ -117,12 +118,36 @@ The KPD is in favor of this reform, having been victims of the *Reichsexekution*
 @presidential_powers_2
 choose-if: reform_support >= pass_threshold
 unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 49 and president != "Braun" : The Center Party does not trust us enough to support this policy. ?]
-on-arrival: constitutional_reform += 1; presidential_powers = 1
+on-arrival: constitutional_reform += 1; presidential_powers = 1; term_limits = 1
 achievement: verfassungsreform
 
 We have successfully passed a constitutional amendment to limit presidential powers! Hopefully this results in a less authoritarian Germany.
 
+@womens_rights
+subtitle: Women's rights will be increased and protected.
+on-arrival: {!
+Q.reform_support = Q.spd_normalized + Q.ddp_normalized + Q.kpd_normalized;
+if (Q.z_relation > 49 && (Q.president == "Hindenburg" || Q.president == "Eckener")) {
+    Q.reform_support += Q.z_normalized;
+} else if (Q.president == "Braun") {
+    Q.reform_support += Q.z_normalized - 0.03;
+}
+!}
+view-if: w_rights = 0
 
+- @womens_rights_2: Call a constitutional referendum to pass the reform!
+- @reforms_menu: See other reform options.
+
+@womens_rights_2
+choose-if: reform_support >= pass_threshold
+unavailable-subtitle: There is not enough support to pass this amendment.
+on-arrival: constitutional_reform += 1; w_rights = 1
+achievement: verfassungsreform
+
+
+ We will enshrine women's rights in the constitution. Abortion will be legalised, divorce made easier and allow women more rights in the family. Women shall also be allowed to hold the offices of President and Chancellor.
+
+The more left leaning parties, the KPD and DDP, support these reforms. On the other hand, the right-wing and religious parties oppose these reforms. [? if reichskonkordat == 1 : Our concordat with the Vatican should blunt the effects of this amendment. ?] [? if reichskonkordat == 0 : The Vatican, and therefore Catholics, should also be unhappy with these developments. ?]
 
 @constitutional_bans
 
