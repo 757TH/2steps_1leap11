@@ -34,6 +34,6 @@ This was somewhat expected of us, but some are still worried about putting all t
 @support_wels
 view-if: spd_in_government = 1
 subtitle: He is our party leader. Being a centrist, he has more support from the other parties.
-on-arrival: z_relation += 5; President = "Wels"; wels_terms += 1;
+on-arrival: z_relation += 5; president = "Wels"; wels_terms += 1;
 
 While a less expected choice, Wels is popular within our party. His selection also makes the Centre happy.
