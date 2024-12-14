@@ -528,7 +528,7 @@ on-arrival: president = "Breitscheid"; reformist_dissent -= 15; center_dissent -
 Rudolf Breitscheid has been elected president! His foreign policy experience will help us internationally, we have yet to see how he is domestically. Our party makes gains from this nonetheless.
 
 @pfufl_wins
-on-arrival: president = "Pfüfl"; kpd_relation = 50 reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); pfufl_terms += 1;
+on-arrival: president = "Pfüfl"; kpd_relation += 50 reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); pfufl_terms += 1;
 
 Antonie Pfüfl has been elected President! This is a historic moment for equality, as is hailed as the start of a new era by progressives globally. The KPD is also satisfied by these developments.
 
