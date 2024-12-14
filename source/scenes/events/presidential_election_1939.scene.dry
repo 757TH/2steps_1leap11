@@ -398,7 +398,7 @@ Q.braun_plurality = (Q.braun_votes >= Q.bruning_votes && Q.braun_votes >= Q.hitl
 Q.wels_plurality = (Q.wels_votes >= Q.bruning_votes && Q.wels_votes >= Q.hitler_votes && Q.wels_votes >= Q.thalmann_votes && Q.wels_votes >= Q.braun_votes);
 // If no candidate gets above 50%, then there's a second round. In the second round, a plurality wins. 
 Q.election_round += 1;
-!}
+
 go-to: bruning_wins if bruning_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; braun_wins if braun_majority == 1; wels_wins if wels_majority == 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
 
 Results:
