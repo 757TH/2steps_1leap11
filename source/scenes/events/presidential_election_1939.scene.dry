@@ -165,33 +165,33 @@ We failed to convince the DVP to support Braun.
 
 @wels_campaign
 
-- @convince_z: Convince the Center Party.
-- @convince_kpd: Convince the Communists.
-- @convince_liberals: Convince the remaining liberals, wherever they are.
+- @convince_z_wels: Convince the Center Party.
+- @convince_kpd_wels: Convince the Communists.
+- @convince_liberals_wels: Convince the remaining liberals, wherever they are.
 - @final_election: The final vote...
 
-@convince_z
+@convince_z_wels
 choose-if: spd_votes >= z_votes
 unavailable-subtitle: The Center knows that they are more popular than us; they do not see a reason to support our candidate.
 on-arrival: z_support_wels = 1; z_support_wels = 2 if president = "Brüning"
-go-to: z_failed if z_support_wels = 0 or (z_support_wels == 2 and historical_mode); z_success if z_support_wels = 1; z_partial if z_support_wels = 2 and not historical_mode
+go-to: z_failed_wels if z_support_wels = 0 or (z_support_wels == 2 and historical_mode); z_success_wels if z_support_wels = 1; z_partial_wels if z_support_wels = 2 and not historical_mode
 max-visits: 1
 
 [? if president != "Brüning": We remind the Centre that we are the only democratic candidates in this race, fighting against radicals on the right and left. ?] [? if president = "Brüning": We remind the Centre that there is more risk of radical victory if the pro-democracy vote is split between our parties. ?]
 
-@z_success
+@z_success_wels
 go-to: wels_campaign
 
 The Center are convinced! They will be part of the Wels coalition.
 
-@z_partial
+@z_partial_wels
 
 The Center are not satisfied with our arguments, but they are open to being convinced. They are willing to run a joint campaign if we front the resources.
 
-- @pay_z: Give them the resources they need.
+- @pay_z_wels: Give them the resources they need.
 - @wels_campaign: Forget about the Center.
 
-@pay_z
+@pay_z_wels
 choose-if: resources >= 3
 subtitle: -3 resources
 unavailable-subtitle: Not enough resources (need 3)
@@ -200,23 +200,23 @@ go-to: wels_campaign
 
 With our resources, the Center are convinced to support Wels over Brüning.
 
-@z_failed
+@z_failed_wels
 go-to: wels_campaign
 
 Unfortunately, we fail to turn them away from Brüning.
 
-@convince_kpd
+@convince_kpd_wels
 choose-if: spd_votes >= kpd_votes
 unavailable-subtitle: The KPD knows that they are more popular than us; they do not see a reason to support our candidate.
 max-visits: 1
 
 The KPD is supporting their own candidate, Ernst Thälmann. [? if kpd_relation >= 50 : However, they are willing to be convinced to drop their campaign and support Wels; how do we convince them? ?][? if kpd_relation < 50 or kpd_party_leader != "Conciliators" : They do not seem willing to be convinced. ?]
 
-- @kpd_resources: Use our resources.
-- @kpd_relations: Use our good relations.
+- @kpd_resources_wels: Use our resources.
+- @kpd_relations_wels: Use our good relations.
 - @wels_campaign: Forget about the KPD.
 
-@kpd_resources
+@kpd_resources_wels
 view-if: kpd_relation >= 50 and not historical_mode
 choose-if: resources >= 3
 subtitle: -3 resources
@@ -226,7 +226,7 @@ go-to: wels_campaign
 
 The KPD now endorses Wels in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
 
-@kpd_relations
+@kpd_relations_wels
 view-if: kpd_relation >= 60 or (kpd_party_leader == "Conciliators" and kpd_relation >= 45)
 unavailable-subtitle: Our relations are not good enough.
 on-arrival: kpd_support_wels = 1
@@ -234,21 +234,21 @@ go-to: wels_campaign
 
 The KPD now endorses Wels in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
 
-@convince_liberals
+@convince_liberals_wels
 max-visits: 1
-go-to: convince_liberals_success if dvp_relation >= 0; convince_liberals_fail if dvp_relation < 0
+go-to: convince_liberals_success_wels if dvp_relation >= 0; convince_liberals_fail_wels if dvp_relation < 0
 
 The liberal vote (DDP and DVP) has been falling over time, so they will probably be of minimal help to us. For what it's worth, the DDP is already willing to support Wels.
 
-@convince_liberals_success
+@convince_liberals_success_wels
 on-arrival: dvp_support_wels = 1
 go-to: wels_campaign
 
 Thanks to our good relations, the DVP has promised to support Wels in the election.
 
-@convince_liberals_fail
-on-arrival: dvp_support_braun = 0
-go-to: braun_campaign
+@convince_liberals_fail_wels
+on-arrival: dvp_support_wels = 0
+go-to: wels_campaign
 
 We failed to convince the DVP to support Wels.
 
