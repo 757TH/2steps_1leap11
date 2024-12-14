@@ -1,4 +1,4 @@
-title: Presidential Election
+title: 1932 Presidential Election
 subtitle: Hindenburg runs for re-election...
 view-if: year = 1932 and (month = 4 or month = 5) or (year = next_pres_election_year and month = 5)
 frequency: 1000
