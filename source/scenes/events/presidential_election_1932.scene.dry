@@ -134,7 +134,7 @@ choose-if: resources >= 3
 subtitle: -3 resources
 unavailable-subtitle: Not enough resources (need 3)
 on-arrival: resources -= 3; z_support_spd = 1
-go-to: braun_campaign
+go-to: spd_campaign
 
 [? if year = 1932: With our resources, the Center are convinced to support us over Hindenburg. ?] [? if year > 1932: With our resources, the Center are convinced to support us. ?]
 
