@@ -18,7 +18,7 @@ The presidential election is coming up soon. [? if spd_in_government = 0 : While
 # if hitler is deported, who would nsdap run? Duesterberg? or Goering?
 # Goering runs, essentially as a proxy for Hitler, who is now stateless.
 
-[? if president = "Brüning: We could throw our support behind Brüning, satisfying the Centre. However, this will cause dissent in our base. We could also try convincing them to support our candidate. ?] [? if president = "Braun": We are expected to continue support for the incumbent, Otto Braun. ?] [? if president = "Wels": We are expected to continue support for the incumbent, Otto Wels. ?]
+[? if president = "Brüning": We could throw our support behind Brüning, satisfying the Centre. However, this will cause dissent in our base. We could also try convincing them to support our candidate. ?] [? if president = "Braun": We are expected to continue support for the incumbent, Otto Braun. ?] [? if president = "Wels": We are expected to continue support for the incumbent, Otto Wels. ?]
 
 [? if kpd_relation >= 50 : Another strange possibilty is an united front with the Communists, either to support Thälmann or our own candidate. ?]
 
