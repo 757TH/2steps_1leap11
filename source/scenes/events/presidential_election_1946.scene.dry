@@ -59,7 +59,7 @@ We can run our own campaign with our own candidate. Which candidate should we ch
 
 @wels
 subtitle: He is our popular party leader who is liked by other parties.
-view-if: (year = 1939 and president = "Wels") or year > 1939
+view-if: ((year = 1939 and president = "Wels") or year > 1939) and (term_limits = 1 and wels_terms < 2)
 on-arrival: wels = 1
 go-to: spd_campaign
 
@@ -69,6 +69,7 @@ The miniscule remnants of the Democratic Party (now called the German State Part
 
 @braun
 subtitle: The current Prussian Minister-President. 
+view-if: term_limits != 1 or (term_limits = 1 and braun_terms < 2)
 on-arrival: braun = 1
 go-to: spd_campaign
 
@@ -77,8 +78,24 @@ go-to: spd_campaign
 The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Braun? What about the Communists?
 
 @breitscheid
-subtitle
+subtitle: A foreign policy expert.
+view-if: year > 1939 and (term_limts != 1 or (term_limits = 1 and breitscheid_terms < 2))
+on-arrival: breitscheid = 1
+go-to: spd_campaign
 
+Breitscheid is one of the SPD's foreign policy experts. His more centrist views may help us in convincing the Centre to support us. [? if eu = 1 and reparations_stopped = 1: He is also credited with improving our relations across Europe, achieving the formation of the European Union and pausing reparations. ?] [? if reichskonkordat = 1: He is also popular among Catholics for the Reichskonkordat. ?]
+
+The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Braun? What about the Communists?
+
+@pfufl
+subtitle: A woman's rights activist.
+view-if: year > 1939 and (term_limits != 1 or (term_limits = 1 and braun_terms < 2)) and w_rights = 1
+on-arrival: pfufl = 1
+go-to: spd_campaign
+
+Pfüfl is one of the party's main women's rights activists. Her selection has been made possible by our constitutional amendment and would be a historic choice, being one of the first women elected for president.
+
+The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Braun? What about the Communists?
 
 @support_thalmann
 choose-if: kpd_relation >= 50 and reformist_strength < left_strength
