@@ -4,8 +4,36 @@ view-if: year = 1934 and month = 8 and president = "Hindenburg"
 frequency: 1
 max-visits: 1
 tags: event
+on-arrival: hindenburg_dead = 1
 new-page: true
 
 = Hindenburg is dead
 
-President Hindenburg has died. As the next Presidential elections are still 5 years away, it has been decided that his successor will be appointed by the Reichstag. [if 
+President Hindenburg has died. As the next Presidential elections are still 5 years away, it has been decided that his successor will be appointed by the Reichstag. 
+
+[if spd_in_government = 0: As we are not currently in the ruling coalition, the Reichstag will most likely select Heinrich Brüning of the Centre Party for President. ?] [? if spd_in_government = 1: As we are currently at the head of the ruling coalition, we should be able to push our candidate through as the next President. Alternatively, as a sign of goodwill to the Centre, we could support Brüning for president. ?] 
+
+- @support_bruning: Support Brüning for president.
+- @support_braun: Otto Braun should be president.
+- @support_Wels: Otto Wels should be president.
+
+@support_bruning
+view-if: nightmare = 0
+subtitle: This will hurt us, but improve relations with the Centre.
+on-arrival: z_relation += 3 if spd_in_government = 0; z_relation += 10 if spd_in_government = 1; president = "Brüning"; bruning_terms += 1;
+
+We have supported Brüning for president, pleasing the Centre in doing so. He will serve as President until 1939.
+
+@support_braun
+view-if: spd_in_government = 1
+subtitle: There are worries that he will become too powerful.
+on-arrival: president = "Braun"; braun_terms += 1;
+
+This was somewhat expected of us, but some are still worried about putting all this power into one man.
+
+@support_wels
+view-if: spd_in_government = 1
+subtitle: He is our party leader. Being a centrist, he has more support from the other parties.
+on-arrival: z_relation += 5; President = "Wels"; wels_terms += 1;
+
+While a less expected choice, Wels is popular within our party. His selection also makes the Centre happy.
