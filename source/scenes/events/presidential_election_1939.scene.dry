@@ -375,8 +375,6 @@ if (Q.thalmann_to_wels_bonus) {
     Q.wels_votes += Q.thalmann_to_wels_bonus;
 }
 
-
-// check for majority
 Q.bruning_votes = Math.round(Q.bruning_votes*100);
 Q.braun_votes = Math.round(Q.braun_votes*100);
 Q.wels_votes = Math.round(Q.wels_votes*100);
@@ -390,14 +388,13 @@ Q.braun_majority = (Q.braun_votes >= 50);
 Q.wels_majority = (Q.wels_votes >= 50)
 Q.any_majority = Q.bruning_majority | Q.thalmann_majority | Q.hitler_majority | Q.braun_majority | Q.wels_majority;
 
-// check for plurality
 Q.bruning_plurality = (Q.bruning_votes >= Q.hitler_votes && Q.bruning_votes >= Q.braun_votes && Q.bruning_votes >= Q.thalmann_votes && Q.bruning_votes >= Q.wels_votes);
 Q.thalmann_plurality = (Q.thalmann_votes >= Q.bruning_votes && Q.thalmann_votes >= Q.braun_votes && Q.thalmann_votes >= Q.hitler_votes && Q.thalmann_votes >= Q.wels_votes);
 Q.hitler_plurality = (Q.hitler_votes >= Q.bruning_votes && Q.hitler_votes >= Q.braun_votes && Q.hitler_votes >= Q.thalmann_votes && Q.hitler_votes >= Q.wels_votes);
 Q.braun_plurality = (Q.braun_votes >= Q.bruning_votes && Q.braun_votes >= Q.hitler_votes && Q.braun_votes >= Q.thalmann_votes && Q.braun_votes >= Q.wels_votes);
 Q.wels_plurality = (Q.wels_votes >= Q.bruning_votes && Q.wels_votes >= Q.hitler_votes && Q.wels_votes >= Q.thalmann_votes && Q.wels_votes >= Q.braun_votes);
-// If no candidate gets above 50%, then there's a second round. In the second round, a plurality wins. 
 Q.election_round += 1;
+
 go-to: bruning_wins if bruning_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; braun_wins if braun_majority == 1; wels_wins if wels_majority == 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
 
 Results:
@@ -463,5 +460,3 @@ Otto Braun of the SPD has won the presidency! This is a moment of celebration fo
 on-arrival: president = "Wels"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); wels_terms += 1;
 
 Otto Wels of the SPD has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
-{!
-!}
