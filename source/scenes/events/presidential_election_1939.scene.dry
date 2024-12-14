@@ -297,23 +297,6 @@ if (Q.braun_campaign) {
     } else {
         Q.bruning_votes += Q.dvp_normalized;
     }
-} else if (Q.spd_support_thalmann) {
-    Q.thalmann_votes += Q.kpd_normalized;
-    Q.thalmann_votes += Q.spd_normalized;
-    Q.bruning_votes += Q.z_normalized;
-    Q.bruning_votes += Q.ddp_normalized;
-    Q.bruning_votes += Q.dvp_normalized;
-} else {
-    Q.bruning_votes += Q.spd_normalized;
-    Q.bruning_votes += Q.z_normalized;
-    Q.bruning_votes += Q.ddp_normalized;
-    Q.bruning_votes += Q.dvp_normalized;
-    Q.thalmann_votes += Q.kpd_normalized;
-}
-if (Q.hitler_support_bruning_1939) {
-    Q.hitler_votes -= Q.nsdap_normalized;
-    Q.bruning_votes += Q.nsdap_normalized;
-}
 
 if (Q.bruning_to_braun_bonus) {
     Q.bruning_votes -= Q.bruning_to_braun_bonus;
@@ -348,6 +331,16 @@ if (Q.wels_campaign) {
     } else {
         Q.bruning_votes += Q.dvp_normalized;
     }
+
+if (Q.bruning_to_wels_bonus) {
+    Q.bruning_votes -= Q.bruning_to_wels_bonus;
+    Q.wels_votes += Q.bruning_to_wels_bonus;
+}
+if (Q.thalmann_to_wels_bonus) {
+    Q.thalmann_votes -= Q.thalmann_to_wels_bonus;
+    Q.wels_votes += Q.thalmann_to_wels_bonus;
+}
+
 } else if (Q.spd_support_thalmann) {
     Q.thalmann_votes += Q.kpd_normalized;
     Q.thalmann_votes += Q.spd_normalized;
@@ -364,15 +357,6 @@ if (Q.wels_campaign) {
 if (Q.hitler_support_bruning_1939) {
     Q.hitler_votes -= Q.nsdap_normalized;
     Q.bruning_votes += Q.nsdap_normalized;
-}
-
-if (Q.bruning_to_wels_bonus) {
-    Q.bruning_votes -= Q.bruning_to_wels_bonus;
-    Q.wels_votes += Q.bruning_to_wels_bonus;
-}
-if (Q.thalmann_to_wels_bonus) {
-    Q.thalmann_votes -= Q.thalmann_to_wels_bonus;
-    Q.wels_votes += Q.thalmann_to_wels_bonus;
 }
 
 Q.bruning_votes = Math.round(Q.bruning_votes*100);
