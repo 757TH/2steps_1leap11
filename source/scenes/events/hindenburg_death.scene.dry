@@ -1,0 +1,11 @@
+title: Hindenburg is dead
+subtitle: The president has died...
+view-if: year = 1934 and month = 8 and president = "Hindenburg"
+frequency: 1
+max-visits: 1
+tags: event
+new-page: true
+
+= Hindenburg is dead
+
+President Hindenburg has died. As the next Presidential elections are still 5 years away, it has been decided that his successor will be appointed by the Reichstag. [if 
