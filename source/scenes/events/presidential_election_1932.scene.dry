@@ -283,7 +283,7 @@ Q.spd_plurality = (Q.spd_votes >= Q.hindenburg_votes && Q.spd_votes >= Q.hitler_
 // If no candidate gets above 50%, then there's a second round. In the second round, a plurality wins. 
 Q.election_round += 1;
 !}
-go-to: hindenburg_wins if hindenburg_majority == 1 and year = 1932; bruning wins if hindenburg_majority == 1 and year = 1939; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; braun_wins if spd_majority == 1 and braun = 1; wels_wins if spd_majority == 1 and wels = 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
+go-to: hindenburg_wins if hindenburg_majority == 1 and year = 1932; bruning_wins if hindenburg_majority == 1 and year = 1939; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; braun_wins if spd_majority == 1 and braun = 1; wels_wins if spd_majority == 1 and wels = 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
 
 Results:
 
