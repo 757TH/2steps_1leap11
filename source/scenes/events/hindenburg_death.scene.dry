@@ -15,7 +15,7 @@ President Hindenburg has died. As the next Presidential elections are still 5 ye
 
 - @support_bruning: Support Brüning for president.
 - @support_braun: Otto Braun should be president.
-- @support_Wels: Otto Wels should be president.
+- @support_wels: Otto Wels should be president.
 
 @support_bruning
 view-if: nightmare = 0
