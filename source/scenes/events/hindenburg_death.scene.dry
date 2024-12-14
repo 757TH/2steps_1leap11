@@ -4,7 +4,7 @@ view-if: year = 1934 and month = 8 and president = "Hindenburg"
 frequency: 1
 max-visits: 1
 tags: event
-on-arrival: hindenburg_dead = 1
+on-arrival: hindenburg_dead = 1; president = "Position vacant";
 new-page: true
 
 = Hindenburg is dead
