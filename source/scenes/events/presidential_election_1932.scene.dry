@@ -1,7 +1,7 @@
 title: Presidential Election
 view-if: year = 1932 and (month = 4 or month = 5) or (year = 1939 and month = 5)
 frequency: 1000
-max-visits: 100
+max-visits: 1
 new-page: true
 on-arrival: spd_campaign = 0; hitler_support_hindenburg = 0; nsdap_candidate = "Hitler" if (hitler_deported == 0 and hitler_dead == 0) else nsdap_candidate = "Göring";
 tags: event
