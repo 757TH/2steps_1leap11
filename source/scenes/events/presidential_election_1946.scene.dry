@@ -17,7 +17,7 @@ The presidential election is coming up soon. [? if spd_in_government = 0 : While
 # if hitler is deported, who would nsdap run? Duesterberg? or Goering?
 # Goering runs, essentially as a proxy for Hitler, who is now stateless.
 
-[? if year = 1932: Many are calling for us to support the incumbent Hindenburg, despite his well-known reactionary tendencies. Is he truly the best bulwark against Hitler's ascension? On the other hand, many in our party are calling for Otto Braun to run again, but he is reluctant. ?] [? if president = "Brüning" : We can support the incumbent, Brüning of the Centre Party. Alternatively, we could run Otto Braun. ?] [? if president = "Braun" or president = "Wels": We are expected to continue support for our incumbent, [+ president +]. ?]
+[? if year = 1932: Many are calling for us to support the incumbent Hindenburg, despite his well-known reactionary tendencies. Is he truly the best bulwark against Hitler's ascension? On the other hand, many in our party are calling for Otto Braun to run again, but he is reluctant. ?] [? if president = "Brüning" : We can support the incumbent, Brüning of the Centre Party. Alternatively, we could run Otto Braun. ?] [? if president = "Braun" or president = "Wels" or president = "Breitscheid" or president = "Pfüfl" or president = "Baade": We are expected to continue support for our incumbent, [+ president +]. ?]
 
 [? if kpd_relation >= 50 : Another strange possibilty is an united front with the Communists, either to support Thälmann or our own candidate. ?]
 
@@ -85,20 +85,28 @@ go-to: spd_campaign
 
 Breitscheid is one of the SPD's foreign policy experts. His more centrist views may help us in convincing the Centre to support us. [? if eu = 1 and reparations_stopped = 1: He is also credited with improving our relations across Europe, achieving the formation of the European Union and pausing reparations. ?] [? if reichskonkordat = 1: He is also popular among Catholics for the Reichskonkordat. ?]
 
-The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Braun? What about the Communists?
+The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? What about the Communists? Maybe the DVP?
 
 @pfufl
 subtitle: A woman's rights activist.
-view-if: year > 1939 and (term_limits != 1 or (term_limits = 1 and braun_terms < 2)) and w_rights = 1
+view-if: year > 1939 and (term_limits != 1 or (term_limits = 1 and pfufl_terms < 2)) and w_rights = 1
 on-arrival: pfufl = 1
 go-to: spd_campaign
 
-Pfüfl is one of the party's main women's rights activists. Her selection has been made possible by our constitutional amendment and would be a historic choice, being one of the first women elected for president.
+Pfüfl is one of the party's main women's rights activists. Her selection has been made possible by our constitutional amendment and would be a historic choice, being one of the first women elected for president. The Communists will likely support us if we select her.
 
-The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Braun? What about the Communists?
+The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Pfüfl?
 
 @baade
-subtitle: 
+subtitle: The agricultural expert.
+view-if: year > 1939 and (term_limts != 1 or (term_limits = 1 and baade_terms < 2))
+on-arrival: baade = 1
+go-to: spd-campaign
+
+Fritz Baade is the party's agricultural policy expert. His selection would help massively in rural areas. [? if rural_policy > 1: His popular agricultural policies, which have benefitted both urban and rural areas, will help his campaign.
+
+The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Baade? What about the Communists?
+
 @support_thalmann
 choose-if: kpd_relation >= 50 and reformist_strength < left_strength
 unavailable-subtitle: [? if kpd_relation < 50 : We do not have good enough relations with the Communists, so they are not even willing to accept our support. ?] [? if reformist_strength >= left_strength : The reformist faction is able to dissuade the party from supporting this arrangement. ?]
@@ -138,7 +146,7 @@ if (Q.z_relation >= 55 || (Q.z_relation > 35 && Q.z_party_leader == "Joos")) {
 }
 !}
 go-to: z_failed if z_support_spd = 0 or (z_support_spd == 2 and historical_mode); z_success if z_support_spd = 1; z_partial if z_support_spd = 2 and not historical_mode
-max-visits: 10
+max-visits: 1
 
 [? if year = 1932: We remind the Center leaders of Hindenburg's anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to Hitler. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Otto Braun, and our support for the Center candidate Wilhelm Marx in the 1925 presidential election. ?] [? if year > 1932: We remind the Centre that we are the only democratic candidates in this race, fighting against radicals on the right and left. ?]
 
@@ -171,12 +179,13 @@ Unfortunately, we fail to turn them towards us.
 @convince_kpd
 choose-if: spd_votes >= kpd_votes
 unavailable-subtitle: The KPD knows that they are more popular than us; they do not see a reason to support our candidate.
-max-visits: 10
+max-visits: 1
 
 The KPD is supporting their own candidate, Ernst Thälmann. [? if kpd_relation >= 50 : However, they are willing to be convinced to drop their campaign and support us; how do we convince them? ?][? if kpd_relation < 50 or kpd_party_leader != "Conciliators" : They do not seem willing to be convinced. ?]
 
 - @kpd_resources: Use our resources.
 - @kpd_relations: Use our good relations.
+- @kpd_pfufl: Use our candidate.
 - @spd_campaign: Forget about the KPD.
 
 @kpd_resources
@@ -197,10 +206,17 @@ go-to: spd_campaign
 
 The KPD now endorses us in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
 
+@kpd_pfufl
+view-if: pfufl = 1
+on-arrival: kpd_support_spd = 1
+go-to: spd_campaign
+
+The KPD is willing to support us, thanks to our progressive policies for women and making Pfüfl our candidate.
+
 
 
 @convince_liberals
-max-visits: 10
+max-visits: 1
 go-to: convince_liberals_success if dvp_relation >= 50; convince_liberals_fail if dvp_relation < 50
 
 The liberal vote (DDP and DVP) has been falling over time, so they will probably be of minimal help to us. For what it's worth, the DDP is already willing to support us.
@@ -308,7 +324,7 @@ Q.spd_plurality = (Q.spd_votes >= Q.hindenburg_votes && Q.spd_votes >= Q.hitler_
 // If no candidate gets above 50%, then there's a second round. In the second round, a plurality wins. 
 Q.election_round += 1;
 !}
-go-to: hindenburg_wins if hindenburg_majority == 1 and year = 1932; bruning_wins if hindenburg_majority == 1 and year = 1939; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; braun_wins if spd_majority == 1 and braun = 1; wels_wins if spd_majority == 1 and wels = 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
+go-to: hindenburg_wins if hindenburg_majority == 1 and year = 1932; bruning_wins if hindenburg_majority == 1 and year = 1939; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; braun_wins if spd_majority == 1 and braun = 1; wels_wins if spd_majority == 1 and wels = 1; breitscheid_wins if spd_majority == 1 and breitscheid = 1; pfufl_wins if spd_majority == 1 and pfufl = 1; baade_wins if spd_majority == 1 and baade = 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
 
 Results:
 
@@ -320,7 +336,15 @@ Results:
 
 [? if kpd_support_spd == 0 : Thälmann - [+ thalmann_votes +]% ?]
 
-[? if spd_campaign > 0 : Braun - [+ spd_votes +]% ?]
+[? if braun = 1 : Braun - [+ spd_votes +]% ?]
+
+[? if wels = 1 : Wels - [+ spd_votes +]% ?]
+
+[? if breitscheid = 1 : Breitscheid - [+ spd_votes +]% ?]
+
+[? if pfufl = 1 : Pfüfl - [+ spd_votes +]% ?]
+
+[? if baade = 1 : Baade - [+ spd_votes +]% ?]
 
 @no_majority_round1
 on-arrival: hitler_support_hindenburg = 1 if (spd_plurality or thalmann_plurality)
@@ -458,7 +482,7 @@ go-to: election_algorithm
 set-jump: post_election
 
 @round2_results
-go-to: hindenburg_wins if hindenburg_plurality == 1 and year = 1932; bruning_wins if hindenburg_plurality == 1 and year = 1939; thalmann_wins if thalmann_plurality == 1; braun_wins if spd_plurality == 1 and braun = 1; wels_wins if spd_plurality == 1 and wels = 1; hitler_wins if hitler_plurality == 1
+go-to: hindenburg_wins if hindenburg_plurality == 1 and year = 1932; bruning_wins if hindenburg_plurality == 1 and year = 1939; thalmann_wins if thalmann_plurality == 1; braun_wins if spd_plurality == 1 and braun = 1; wels_wins if spd_plurality == 1 and wels = 1; breitscheid_wins if spd_plurality == 1 and breitscheid = 1; pfufl_wins if spd_plurality == 1 and pfufl = 1; baade_wins if spd_plurality and baade = 1; hitler_wins if hitler_plurality == 1
 
 
 @hindenburg_wins
@@ -497,3 +521,18 @@ Otto Braun of the SPD has won the presidency! This is a moment of celebration fo
 on-arrival: president = "Wels"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); wels_terms += 1;
 
 Otto Wels of the SPD has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
+
+@breitscheid_wins
+on-arrival: president = "Breitscheid"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); breitscheid_terms += 1;
+
+Rudolf Breitscheid has been elected president! His foreign policy experience will help us internationally, we have yet to see how he is domestically. Our party makes gains from this nonetheless.
+
+@pfufl_wins
+on-arrival: president = "Pfüfl"; kpd_relation = 50 reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); pfufl_terms += 1;
+
+Antonie Pfüfl has been elected President! This is a historic moment for equality, as is hailed as the start of a new era by progressives globally. The KPD is also satisfied by these developments.
+
+@baade_wins
+on-arrival: president = "Baade"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 30; unemployed_spd += 5*(1-dissent); baade_terms += 1;
+
+Fritz Baade has been elected President! This greatly improves our standing in rural constituencies. [? if rural_policy > 1: The farmers are happy with the changes he has made thus far, and hope for more. ?]
