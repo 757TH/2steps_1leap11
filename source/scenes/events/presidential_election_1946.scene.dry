@@ -101,7 +101,7 @@ The miniscule remnants of the Democratic Party (now called the German State Part
 subtitle: The agricultural expert.
 view-if: year > 1939 and (term_limts != 1 or (term_limits = 1 and baade_terms < 2))
 on-arrival: baade = 1
-go-to: spd-campaign
+go-to: spd_campaign
 
 Fritz Baade is the party's agricultural policy expert. His selection would help massively in rural areas. [? if rural_policy > 1: His popular agricultural policies, which have benefitted both urban and rural areas, will help his campaign. ?]
 
