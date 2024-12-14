@@ -4,7 +4,7 @@ view-if: year = 1939 and month = 5
 frequency: 1000
 max-visits: 1
 new-page: true
-on-arrival: spd_campaign_1939 = 0; presidential_election_seen_1939 = 1; nsdap_candidate_1939 = "Hitler" if (hitler_deported == 0 and hitler_dead == 0) else nsdap_candidate_1939 = "Göring"; wels_1939 = 0; braun_1939 = 0; hitler_support_hindenburg = 0;
+on-arrival: spd_campaign_1939 = 0; presidential_election_seen_1939 = 1; nsdap_candidate_1939 = "Hitler" if (hitler_deported == 0 and hitler_dead == 0) else nsdap_candidate_1939 = "Göring"; wels_1939 = 0; braun_1939 = 0; hitler_support_hindenburg = 0; hitler_support_bruning = 0;
 tags: event
 go-to: election_algorithm
 set-jump: pres_election
