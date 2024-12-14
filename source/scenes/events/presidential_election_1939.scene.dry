@@ -4,7 +4,7 @@ view-if: year = 1939 and (month = 4 or month = 5)
 frequency: 1000
 max-visits: 1
 new-page: true
-on-arrival: spd_campaign_1939 = 0; hitler_support_hindenburg_1939 = 0; presidential_election_seen_1939 = 1; nsdap_candidate_1939 = "Hitler" if (hitler_deported == 0 and hitler_dead == 0) else nsdap_candidate_1939 = "Göring";
+on-arrival: braun_campaign_1939 = 0; wels_campaign_1939 = 0; hitler_support_bruning_1939 = 0; presidential_election_seen_1939 = 1; nsdap_candidate_1939 = "Hitler" if (hitler_deported == 0 and hitler_dead == 0) else nsdap_candidate_1939 = "Göring";
 tags: event
 go-to: election_algorithm
 set-jump: pres_election
@@ -12,39 +12,49 @@ face-image: img/hindenburg_election.jpg
 
 @pres_election
 
-The presidential election is coming up soon. [? if spd_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the president's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the KPD will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the KPD will run Ernst Thälmann. ?][? if hitler_dead==1 : Since Hitler is dead, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for the late Hitler, who, despite being dead, retains a popular base who wishes to see his vile work continued in Germany. Meanwhile, the KPD will run Ernst Thälmann. ?]
+The presidential election is coming up soon. [? if spd_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the president's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : Both extreme parties, the NSDAP and KPD, are supporting their own candidates, Hitler and Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the KPD will run Ernst Thälmann. ?][? if hitler_dead==1 : Since Hitler is dead, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for the late Hitler, who, despite being dead, retains a popular base who wishes to see his vile work continued in Germany. Meanwhile, the KPD will run Ernst Thälmann. ?] [? if president = Brüning: The Centre, meanwhile, will run Brüning for a second term. ?]
 [? if sapd_formed: The SAPD, our former leftists, are supporting Thälmann of the KPD, and will likely share an endorsement with the Communists. ?]
 
 # if hitler is deported, who would nsdap run? Duesterberg? or Goering?
 # Goering runs, essentially as a proxy for Hitler, who is now stateless.
 
-Many are calling for us to support the incumbent Hindenburg, despite his well-known reactionary tendencies. Is he truly the best bulwark against Hitler's ascension? On the other hand, many in our party are calling for Otto Braun to run again, but he is reluctant.
+[? if president = "Brüning: We could throw our support behind Brüning, satisfying the Centre. However, this will cause dissent in our base. We could also try convincing them to support our candidate. ?] [? if president = "Braun": We are expected to continue support for the incumbent, Otto Braun. ?] [? if president = "Wels": We are expected to continue support for the incumbent, Otto Wels. ?]
 
 [? if kpd_relation >= 50 : Another strange possibilty is an united front with the Communists, either to support Thälmann or our own candidate. ?]
 
 
-- @support_hindenburg: Support Hindenburg.
-- @support_braun: Run Otto Braun of the SPD.
+- @support_bruning: Support Brüning.
+- @support_braun: Run Otto Braun.
+- @support_wels: Run Otto Wels
 - @support_thalmann: Support Ernst Thälmann of the KPD.
 
-@support_hindenburg
-subtitle: This is the default option.
+@support_bruning
+subtitle: He is the current President, after all.
+view-if: president = "Brüning" and bruning_terms < 2
 
-Despite his known reactionary nature, Hindenburg has at least been keeping the Nazis at bay. Thus, we must support him.
+While he is right-wing, he can help us build bonds with the Centre.
 
 - @final_election: The final vote...
 
 @support_braun
-subtitle: This will cost us 2 resources.
-choose-if: resources >= 2
-unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 2; braun_campaign = 1
+subtitle: He is the expected choice of our party.
+view-if: braun_terms < 2
+on-arrival: resources -= 2; braun_campaign_1939 = 1
 go-to: braun_campaign
 
-It takes effort to run a somewhat unexpected campaign. First, Braun has to be convinced to run. He himself had supported voting for Hindenburg, and it takes a good deal of prodding to convince him of his destiny.
+[? if president != "Braun": It takes effort to run a somewhat unexpected campaign. First, Braun has to be convinced to run. He himself had supported voting for Brüning, and it takes a good deal of prodding to convince him of his destiny. ?] [? if president = "Braun": As he is currently the incumbent, he does not take much convincing the run for a second term. ?]
 
 The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Braun? What about the Communists?
 
+@support_wels
+subtitle: As the incumbent, our support of him is expected.
+view-if: president = "Wels" and wels_terms < 2
+on-arrival: resources -= 2; wels_campaign_1939 = 1
+go-to: wels_campaign
+
+As he is the incumbent, everyone expected us to run him for a second term. He is a popular figure in our party and is more liked by the Centre than Braun, making them more likely to support us.
+
+The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Wels? What about the Communists?
 
 @support_thalmann
 choose-if: kpd_relation >= 50 and reformist_strength < left_strength
@@ -54,7 +64,8 @@ Supporting Thälmann is rather unpopular in our party, even if the Communists ac
 
 - @support_thalmann_2: Yes, we will support Thälmann, despite the reformists' pleas against it.
 - @support_braun: Support Braun instead.
-- @support_hindenburg: Support Hindenburg instead.
+- @support_wels: Support Wels instead.
+- @support_bruning: Support Brüning instead.
 
 @support_thalmann_2
 on-arrival: spd_support_thalmann = 1; reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_spd -= 5; workers_spd -= 3; kpd_relation += 10; communist_coalition += 2; z_relation -= 15; dvp_relation -= 15
@@ -73,20 +84,11 @@ Fine. We have thrown our support to Chairman Thälmann of the KPD.
 @convince_z
 choose-if: spd_votes >= z_votes
 unavailable-subtitle: The Center knows that they are more popular than us; they do not see a reason to support our candidate.
-on-arrival: {!
-Q.z_support_braun = 0;
-if (Q.z_relation >= 55 || (Q.z_relation > 35 && Q.z_party_leader == "Joos")) {
-    Q.z_support_braun = 1;
-} else if (Q.z_relation <= 35) {
-    Q.z_support_braun = 0;
-} else {
-    Q.z_support_braun = 2;
-}
-!}
+on-arrival: z_support_braun = 1; z_support_braun = 2 if president = "Brüning"
 go-to: z_failed if z_support_braun = 0 or (z_support_braun == 2 and historical_mode); z_success if z_support_braun = 1; z_partial if z_support_braun = 2 and not historical_mode
 max-visits: 1
 
-We remind the Center leaders of Hindenburg's anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to Hitler. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Otto Braun, and our support for the Center candidate Wilhelm Marx in the 1925 presidential election.
+[? if president != "Brüning": We remind the Centre that we are the only democratic candidates in this race, fighting against radicals on the right and left. ?] [? if president = "Brüning": We remind the Centre that there is more risk of radical victory if the pro-democracy vote is split between our parties. ?]
 
 @z_success
 go-to: braun_campaign
@@ -107,12 +109,12 @@ unavailable-subtitle: Not enough resources (need 3)
 on-arrival: resources -= 3; z_support_braun = 1
 go-to: braun_campaign
 
-With our resources, the Center are convinced to support Braun over Hindenburg.
+With our resources, the Center are convinced to support Braun over Brüning.
 
 @z_failed
 go-to: braun_campaign
 
-Unfortunately, we fail to turn them away from Hindenburg.
+Unfortunately, we fail to turn them away from Brüning.
 
 @convince_kpd
 choose-if: spd_votes >= kpd_votes
@@ -143,11 +145,9 @@ go-to: braun_campaign
 
 The KPD now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
 
-
-
 @convince_liberals
 max-visits: 1
-go-to: convince_liberals_success if dvp_relation >= 50; convince_liberals_fail if dvp_relation < 50
+go-to: convince_liberals_success if dvp_relation >= 0; convince_liberals_fail if dvp_relation < 0
 
 The liberal vote (DDP and DVP) has been falling over time, so they will probably be of minimal help to us. For what it's worth, the DDP is already willing to support Braun.
 
@@ -163,6 +163,95 @@ go-to: braun_campaign
 
 We failed to convince the DVP to support Braun.
 
+@wels_campaign
+
+- @convince_z: Convince the Center Party.
+- @convince_kpd: Convince the Communists.
+- @convince_liberals: Convince the remaining liberals, wherever they are.
+- @final_election: The final vote...
+
+@convince_z
+choose-if: spd_votes >= z_votes
+unavailable-subtitle: The Center knows that they are more popular than us; they do not see a reason to support our candidate.
+on-arrival: z_support_wels = 1; z_support_wels = 2 if president = "Brüning"
+go-to: z_failed if z_support_wels = 0 or (z_support_wels == 2 and historical_mode); z_success if z_support_wels = 1; z_partial if z_support_wels = 2 and not historical_mode
+max-visits: 1
+
+[? if president != "Brüning": We remind the Centre that we are the only democratic candidates in this race, fighting against radicals on the right and left. ?] [? if president = "Brüning": We remind the Centre that there is more risk of radical victory if the pro-democracy vote is split between our parties. ?]
+
+@z_success
+go-to: wels_campaign
+
+The Center are convinced! They will be part of the Wels coalition.
+
+@z_partial
+
+The Center are not satisfied with our arguments, but they are open to being convinced. They are willing to run a joint campaign if we front the resources.
+
+- @pay_z: Give them the resources they need.
+- @wels_campaign: Forget about the Center.
+
+@pay_z
+choose-if: resources >= 3
+subtitle: -3 resources
+unavailable-subtitle: Not enough resources (need 3)
+on-arrival: resources -= 3; z_support_wels = 1
+go-to: wels_campaign
+
+With our resources, the Center are convinced to support Wels over Brüning.
+
+@z_failed
+go-to: wels_campaign
+
+Unfortunately, we fail to turn them away from Brüning.
+
+@convince_kpd
+choose-if: spd_votes >= kpd_votes
+unavailable-subtitle: The KPD knows that they are more popular than us; they do not see a reason to support our candidate.
+max-visits: 1
+
+The KPD is supporting their own candidate, Ernst Thälmann. [? if kpd_relation >= 50 : However, they are willing to be convinced to drop their campaign and support Wels; how do we convince them? ?][? if kpd_relation < 50 or kpd_party_leader != "Conciliators" : They do not seem willing to be convinced. ?]
+
+- @kpd_resources: Use our resources.
+- @kpd_relations: Use our good relations.
+- @wels_campaign: Forget about the KPD.
+
+@kpd_resources
+view-if: kpd_relation >= 50 and not historical_mode
+choose-if: resources >= 3
+subtitle: -3 resources
+unavailable-subtitle: Not enough resources (need 3).
+on-arrival: resources -= 3; kpd_support_wels = 1
+go-to: wels_campaign
+
+The KPD now endorses Wels in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
+
+@kpd_relations
+view-if: kpd_relation >= 60 or (kpd_party_leader == "Conciliators" and kpd_relation >= 45)
+unavailable-subtitle: Our relations are not good enough.
+on-arrival: kpd_support_wels = 1
+go-to: wels_campaign
+
+The KPD now endorses Wels in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
+
+@convince_liberals
+max-visits: 1
+go-to: convince_liberals_success if dvp_relation >= 0; convince_liberals_fail if dvp_relation < 0
+
+The liberal vote (DDP and DVP) has been falling over time, so they will probably be of minimal help to us. For what it's worth, the DDP is already willing to support Wels.
+
+@convince_liberals_success
+on-arrival: dvp_support_wels = 1
+go-to: wels_campaign
+
+Thanks to our good relations, the DVP has promised to support Wels in the election.
+
+@convince_liberals_fail
+on-arrival: dvp_support_braun = 0
+go-to: braun_campaign
+
+We failed to convince the DVP to support Wels.
+
 
 
 @final_election
@@ -174,14 +263,15 @@ set-jump: post_election
 @post_election
 on-arrival: {!
 Q.braun_votes = 0;
-Q.hindenburg_votes = 0;
+Q.wels_votes = 0:
+Q.bruning_votes = 0;
 Q.hitler_votes = 0;
 Q.thalmann_votes = 0;
 
 // initial phase:
 Q.hitler_votes += Q.nsdap_normalized;
-Q.hindenburg_votes += Q.other_normalized;
-Q.hindenburg_votes += Q.dnvp_normalized;
+Q.hitler_votes += Q.other_normalized;
+Q.hitler_votes += Q.dnvp_normalized;
 
 if (Q.braun_campaign) {
     Q.braun_votes += Q.spd_normalized;
@@ -189,7 +279,7 @@ if (Q.braun_campaign) {
     if (Q.z_support_braun && Q.z_support_braun == 1) {
         Q.braun_votes += Q.z_normalized;
     } else {
-        Q.hindenburg_votes += Q.z_normalized;
+        Q.bruning_votes += Q.z_normalized;
     }
     if (Q.kpd_support_braun) {
         Q.braun_votes += Q.kpd_normalized;
@@ -205,60 +295,115 @@ if (Q.braun_campaign) {
     if (Q.dvp_support_braun) {
         Q.braun_votes += Q.dvp_normalized;
     } else {
-        Q.hindenburg_votes += Q.dvp_normalized;
+        Q.bruning_votes += Q.dvp_normalized;
     }
 } else if (Q.spd_support_thalmann) {
     Q.thalmann_votes += Q.kpd_normalized;
     Q.thalmann_votes += Q.spd_normalized;
-    Q.hindenburg_votes += Q.z_normalized;
-    Q.hindenburg_votes += Q.ddp_normalized;
-    Q.hindenburg_votes += Q.dvp_normalized;
+    Q.bruning_votes += Q.z_normalized;
+    Q.bruning_votes += Q.ddp_normalized;
+    Q.bruning_votes += Q.dvp_normalized;
 } else {
-    Q.hindenburg_votes += Q.spd_normalized;
-    Q.hindenburg_votes += Q.z_normalized;
-    Q.hindenburg_votes += Q.ddp_normalized;
-    Q.hindenburg_votes += Q.dvp_normalized;
+    Q.bruning_votes += Q.spd_normalized;
+    Q.bruning_votes += Q.z_normalized;
+    Q.bruning_votes += Q.ddp_normalized;
+    Q.bruning_votes += Q.dvp_normalized;
     Q.thalmann_votes += Q.kpd_normalized;
 }
-if (Q.hitler_support_hindenburg) {
+if (Q.hitler_support_bruning_1939) {
     Q.hitler_votes -= Q.nsdap_normalized;
-    Q.hindenburg_votes += Q.nsdap_normalized;
+    Q.bruning_votes += Q.nsdap_normalized;
 }
 
-if (Q.hindenburg_to_braun_bonus) {
-    Q.hindenburg_votes -= Q.hindenburg_to_braun_bonus;
-    Q.braun_votes += Q.hindenburg_to_braun_bonus;
+if (Q.bruning_to_braun_bonus) {
+    Q.bruning_votes -= Q.bruning_to_braun_bonus;
+    Q.braun_votes += Q.bruning_to_braun_bonus;
 }
 if (Q.thalmann_to_braun_bonus) {
     Q.thalmann_votes -= Q.thalmann_to_braun_bonus;
     Q.braun_votes += Q.thalmann_to_braun_bonus;
 }
 
+if (Q.wels_campaign) {
+    Q.wels_votes += Q.spd_normalized;
+    Q.wels_votes += Q.ddp_normalized;
+    if (Q.z_support_wels && Q.z_support_wels == 1) {
+        Q.wels_votes += Q.z_normalized;
+    } else {
+        Q.bruning_votes += Q.z_normalized;
+    }
+    if (Q.kpd_support_wels) {
+        Q.wels_votes += Q.kpd_normalized;
+        if (Q.sapd_formed && Q.sapd_votes) {
+            Q.wels_votes += Q.sapd_normalized;
+        }
+    } else {
+        Q.thalmann_votes += Q.kpd_normalized;
+        if (Q.sapd_formed && Q.sapd_votes) {
+            Q.thalmann_votes += Q.sapd_normalized;
+        }
+    }
+    if (Q.dvp_support_wels) {
+        Q.wels_votes += Q.dvp_normalized;
+    } else {
+        Q.bruning_votes += Q.dvp_normalized;
+    }
+} else if (Q.spd_support_thalmann) {
+    Q.thalmann_votes += Q.kpd_normalized;
+    Q.thalmann_votes += Q.spd_normalized;
+    Q.bruning_votes += Q.z_normalized;
+    Q.bruning_votes += Q.ddp_normalized;
+    Q.bruning_votes += Q.dvp_normalized;
+} else {
+    Q.bruning_votes += Q.spd_normalized;
+    Q.bruning_votes += Q.z_normalized;
+    Q.bruning_votes += Q.ddp_normalized;
+    Q.bruning_votes += Q.dvp_normalized;
+    Q.thalmann_votes += Q.kpd_normalized;
+}
+if (Q.hitler_support_bruning_1939) {
+    Q.hitler_votes -= Q.nsdap_normalized;
+    Q.bruning_votes += Q.nsdap_normalized;
+}
+
+if (Q.bruning_to_wels_bonus) {
+    Q.bruning_votes -= Q.bruning_to_wels_bonus;
+    Q.wels_votes += Q.bruning_to_wels_bonus;
+}
+if (Q.thalmann_to_wels_bonus) {
+    Q.thalmann_votes -= Q.thalmann_to_wels_bonus;
+    Q.wels_votes += Q.thalmann_to_wels_bonus;
+}
+
+
 // check for majority
-Q.hindenburg_votes = Math.round(Q.hindenburg_votes*100);
+Q.bruning_votes = Math.round(Q.bruning_votes*100);
 Q.braun_votes = Math.round(Q.braun_votes*100);
+Q.wels_votes = Math.round(Q.wels_votes*100);
 Q.hitler_votes = Math.round(Q.hitler_votes*100);
 Q.thalmann_votes = Math.round(Q.thalmann_votes*100);
 
-Q.hindenburg_majority = (Q.hindenburg_votes >= 50);
+Q.bruning_majority = (Q.bruning_votes >= 50);
 Q.thalmann_majority = (Q.thalmann_votes >= 50);
 Q.hitler_majority = (Q.hitler_votes >= 50);
 Q.braun_majority = (Q.braun_votes >= 50);
-Q.any_majority = Q.hindenburg_majority | Q.thalmann_majority | Q.hitler_majority | Q.braun_majority;
+Q.wels_majority = (Q.wels_votes >= 50)
+Q.any_majority = Q.bruning_majority | Q.thalmann_majority | Q.hitler_majority | Q.braun_majority | Q.wels_majority;
 
 // check for plurality
-Q.hindenburg_plurality = (Q.hindenburg_votes >= Q.hitler_votes && Q.hindenburg_votes >= Q.braun_votes && Q.hindenburg_votes >= Q.thalmann_votes);
-Q.thalmann_plurality = (Q.thalmann_votes >= Q.hindenburg_votes && Q.thalmann_votes >= Q.braun_votes && Q.thalmann_votes >= Q.hitler_votes);
-Q.hitler_plurality = (Q.hitler_votes >= Q.hindenburg_votes && Q.hitler_votes >= Q.braun_votes && Q.hitler_votes >= Q.thalmann_votes);
-Q.braun_plurality = (Q.braun_votes >= Q.hindenburg_votes && Q.braun_votes >= Q.hitler_votes && Q.braun_votes >= Q.thalmann_votes);
+Q.bruning_plurality = (Q.bruning_votes >= Q.hitler_votes && Q.bruning_votes >= Q.braun_votes && Q.bruning_votes >= Q.thalmann_votes && Q.bruning_votes >= Q.wels_votes);
+Q.thalmann_plurality = (Q.thalmann_votes >= Q.bruning_votes && Q.thalmann_votes >= Q.braun_votes && Q.thalmann_votes >= Q.hitler_votes && Q.thalmann_votes >= Q.wels_votes);
+Q.hitler_plurality = (Q.hitler_votes >= Q.bruning_votes && Q.hitler_votes >= Q.braun_votes && Q.hitler_votes >= Q.thalmann_votes && Q.hitler_votes >= Q.wels_votes);
+Q.braun_plurality = (Q.braun_votes >= Q.bruning_votes && Q.braun_votes >= Q.hitler_votes && Q.braun_votes >= Q.thalmann_votes && Q.braun_votes >= Q.wels_votes);
+Q.wels_plurality = (Q.wels_votes >= Q.bruning_votes && Q.wels_votes >= Q.hitler_votes && Q.wels_votes >= Q.thalmann_votes && Q.wels_votes >= Q.braun_votes);
 // If no candidate gets above 50%, then there's a second round. In the second round, a plurality wins. 
 Q.election_round += 1;
 !}
-go-to: hindenburg_wins if hindenburg_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; braun_wins if braun_majority == 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
+go-to: bruning_wins if bruning_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; braun_wins if braun_majority == 1; wels_wins if wels_majority == 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
 
 Results:
 
-Hindenburg - [+ hindenburg_votes +]%
+Bruning - [+ Bruning_votes +]%
 
 [+ nsdap_candidate +] - [+ hitler_votes +]%
 
@@ -266,134 +411,17 @@ Hindenburg - [+ hindenburg_votes +]%
 
 [? if braun_campaign > 0 : Braun - [+ braun_votes +]% ?]
 
+[? if wels_campaign > 0 : Wels - [+ wels_votes +]% ?]
+
 @no_majority_round1
-on-arrival: hitler_support_hindenburg = 1 if (braun_plurality or thalmann_plurality)
+on-arrival: hitler_support_bruning_1939 = 1 if (braun_plurality or thalmann_plurality or wels_plurality)
 go-to: round2_menu
 
 There is no majority in this round. In the second round, any candidate who wins a plurality will win overall. What should we do?
 
-[? if braun_plurality or thalmann_plurality : In order to consolidate the vote for the Right, and to prevent a socialist from becoming president, [+ nsdap_candidate +] is no longer running in the second round, and has switched his endorsement to Hindenburg. ?]
-
+[? if braun_plurality or thalmann_plurality or wels_plurality : In order to consolidate the vote for the Right, and to prevent a socialist from becoming president, [+ nsdap_candidate +] is no longer running in the second round, and has switched his endorsement to Brüning. ?]
 
 @round2_menu
-
-- @round2_convince_z: Convince the Center to switch their support to us.
-- @round2_convince_kpd: Convince the KPD to switch their support to us. 
-- @round2_hindenburg: Switch our support to Hindenburg.
-- @round2_thalmann: Switch our support to Thälmann of the KPD.
-- @round2_vote: Let the second round voting begin.
-
-
-@round2_convince_z
-view-if: braun_campaign > 0 and z_support_braun != 1 
-choose-if: spd_votes >= z_votes
-unavailable-subtitle: The Center knows that they are more popular than us; they do not see a reason to support our candidate.
-on-arrival: {!
-Q.z_support_braun = 0;
-// TODO: if Hindenburg support is greater than Hitler and Braun support, this should be much harder
-
-if ((Q.z_relation >= 55 && Q.braun_votes >= Q.hindenburg_votes) || (Q.z_relation > 35 && Q.z_party_leader == "Joos")) {
-    Q.z_support_braun = 1;
-    if (Q.hitler_support_hindenburg) {
-        Q.hindenburg_to_braun_bonus += Q.other_normalized/2;
-    }
-} else if (Q.z_relation >= 50 && Q.hitler_support_hindenburg) {
-    Q.z_support_braun = 1;
-    Q.hindenburg_to_braun_bonus += Q.other_normalized/2;
-} else if (Q.z_relation <= 35 || (Q.z_relation <= 45 && Q.braun_votes < Q.hindenburg_votes && Q.hindenburg_votes > Q.hitler_votes)) {
-    Q.z_support_braun = 0;
-} else {
-    Q.z_support_braun = 2;
-}
-!}
-go-to: r2_z_failed if z_support_braun = 0 or (z_support_braun = 2 and historical_mode); r2_z_success if z_support_braun = 1; r2_z_partial if z_support_braun = 2 and not historical_mode
-max-visits: 1
-
-@r2_z_success
-go-to: round2_menu
-
-[? if hitler_support_hindenburg : The Center's opinion is affected by the Nazis' support of Hindenburg, and is willing to turn away from him. ?] The Center are convinced! They will be part of the Braun coalition. [? if hitler_support_hindenburg : In addition, they will also bring in some minor parties who will support us. ?]
-
-@r2_z_partial
-
-The Center are not satisfied with our arguments, but they are open to being convinced[? if hitler_support_hindenburg: , especially given the Nazis' support for Hindenburg. ?]. They are willing to run a joint campaign if we front the resources.
-
-- @r2_pay_z: Give them the resources they need.
-- @round2_menu: Forget about the Center.
-
-@r2_pay_z
-choose-if: resources >= 2
-subtitle: -2 resources
-unavailable-subtitle: Not enough resources (need 2)
-on-arrival: resources -= 2; z_support_braun = 1
-go-to: round2_menu
-
-With our resources, the Center are convinced to support Braun over Hindenburg.
-
-@r2_z_failed
-go-to: round2_menu
-
-Unfortunately, we fail to turn them away from Hindenburg. [? if hindenburg_votes > braun_votes : Given that Hindenburg received more votes than Braun, they believe that we should turn to Hindenburg, not the other way around. ?]
-
-
-
-
-@round2_convince_kpd
-choose-if: spd_votes >= kpd_votes
-unavailable-subtitle: The KPD knows that they are more popular than us; they do not see a reason to support our candidate.
-view-if: braun_campaign > 0 and kpd_support_braun == 0 
-max-visits: 1
-
-The KPD is committed to supporting Ernst Thälmann. [? if kpd_relation >= 45 : However, the Nazi-Hindenburg coalition worries them enough that they are willing to be convinced to drop their campaign and support Braun. ?][? if kpd_relation < 45 : They do not seem willing to be convinced. ?]
-
-- @r2_kpd_resources: Use our resources.
-- @r2_kpd_relations: Use our good relations.
-- @round2_menu: Forget about the KPD.
-
-@r2_kpd_resources
-view-if: kpd_relation >= 45 and not historical_mode
-choose-if: resources >= 3
-subtitle: -3 resources
-unavailable-subtitle: Not enough resources (need 3).
-on-arrival: resources -= 3; kpd_support_braun = 1
-go-to: round2_menu
-
-The KPD now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
-
-@r2_kpd_relations
-view-if: kpd_relation >= 60 or (kpd_party_leader == "Conciliators" and kpd_relation >= 45)
-unavailable-subtitle: Our relations are not good enough.
-on-arrival: kpd_support_braun = 1
-go-to: round2_menu
-
-The KPD now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters. 
-
-@round2_thalmann
-view-if: spd_support_thalmann == 0 and kpd_support_braun == 0
-choose-if: kpd_relation >= 50 and left_strength > reformist_strength 
-unavailable-subtitle: [? if kpd_relation < 50 : We do not have good enough relations with the Communists, so they are not even willing to accept our support. ?] [? if reformist_strength >= left_strength : The reformist faction is able to dissuade the party from supporting this bizarre arrangement. ?]
-max-visits: 1
-
-Supporting Thälmann is rather unpopular in our party, even if the Communists accept our support. Are we sure?
-
-- @round2_thalmann_2: Yes, we will support Thälmann, despite the reformists' pleas against it.
-- @round2_menu: Never mind.
-
-@round2_thalmann_2
-on-arrival: braun_campaign = 0; spd_support_thalmann = 1; reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_spd -= 5; workers_spd -= 3; kpd_relation += 10; communist_coalition += 2; z_relation -= 15; dvp_relation -= 15
-on-departure: z_support_braun = 0; kpd_support_braun = 0;
-
-Fine. We have thrown our support to Chairman Thälmann of the KPD.
-
-[? if z_support_braun : The Center Party is confused at our capricious behavior, and have switched their support to Hindenburg. ?]
-
-- @round2_vote: Let the second round voting begin.
-
-@round2_hindenburg
-view-if: braun_campaign > 0 or spd_support_thalmann > 0
-on-arrival: braun_campaign = 0; spd_support_thalmann = 0
-
-We have switched our support to Hindenburg.
 
 - @round2_vote: Let the second round voting begin.
 
@@ -402,23 +430,23 @@ go-to: election_algorithm
 set-jump: post_election
 
 @round2_results
-go-to: hindenburg_wins if hindenburg_plurality == 1; thalmann_wins if thalmann_plurality == 1; braun_wins if braun_plurality == 1; hitler_wins if hitler_plurality == 1
+go-to: bruning_wins if bruning_plurality == 1; thalmann_wins if thalmann_plurality == 1; braun_wins if braun_plurality == 1; hitler_wins if hitler_plurality == 1; wels_wins if wels_plurality == 1
 
 
 @hindenburg_wins
-on-arrival: president = "Hindenburg"; judicial_reform -= 1 if (nightmare >= 1 and judicial_reform >= 1)
+on-arrival: president = "Brüning"; judicial_reform -= 1 if (nightmare >= 1 and judicial_reform >= 1); bruning_terms += 1
 
-As expected, the incumbent Hindenburg wins the presidency. Let's hope he continues to keep the Nazis out of power.
+Brüning has won the election, keeping radicals out of power. [? if term_limits = 1: Due to our constitutional amendments, this will be his last term as president. ?]
 
 @thalmann_wins
-on-arrival: president = "Thälmann"; kpd_relation = 80;
+on-arrival: president = "Thälmann"; kpd_relation = 80; thalmann_terms += 1
 
 Ernst Thälmann of the KPD has won the presidency. Immediately, the far-right launches a coup attempt against the government. We have no choice but to unite with the KPD against the fascists...
 
 - @civil_war: This is civil war.
 
 @hitler_wins
-on-arrival: president = nsdap_candidate; chancellor = "Hitler" if hitler_dead = 0; chancellor = nsdap_candidate if hitler_dead = 1; chancellor_party = "NSDAP"
+on-arrival: president = nsdap_candidate; chancellor = "Hitler" if hitler_dead = 0; chancellor = nsdap_candidate if hitler_dead = 1; chancellor_party = "NSDAP"; nsdap_terms += 1
 
 [? if nsdap_candidate == "Hitler" : Adolf Hitler of the NSDAP has won the presidency. He wastes no time in consolidating power. ?]
 [? if nsdap_candidate != "Hitler" and hitler_dead = 0 : The NSDAP candidate [+ president +] has won. The first action President [+ president +] takes is inviting Hitler back into Germany, and appointing him chancellor. The Nazis waste no time in consolidating power. ?]
@@ -428,6 +456,12 @@ on-arrival: president = nsdap_candidate; chancellor = "Hitler" if hitler_dead = 
 
 
 @braun_wins
-on-arrival: president = "Braun"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent);
+on-arrival: president = "Braun"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); braun_terms += 1;
 
 Otto Braun of the SPD has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
+
+@wels_wins
+on-arrival: president = "Wels"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); wels_terms += 1;
+
+Otto Wels of the SPD has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
+
