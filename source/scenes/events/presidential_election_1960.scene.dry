@@ -60,7 +60,7 @@ We can run our own campaign with our own candidate. Which candidate should we ch
 @wels
 subtitle: He is our popular party leader who is liked by other parties.
 view-if: ((year = 1939 and president = "Wels") or year > 1939) and (term_limits = 1 and wels_terms < 2)
-on-arrival: wels = 1
+on-arrival: wels = 1; braun = 0; breitscheid = 0; pfufl = 0; baade = 0
 go-to: spd_campaign
 
 Being our current incumbent, Otto Wels is also our party leader and is the preferred choice of the Centre over other parties.
@@ -70,7 +70,7 @@ The miniscule remnants of the Democratic Party (now called the German State Part
 @braun
 subtitle: The current Prussian Minister-President. 
 view-if: term_limits != 1 or (term_limits = 1 and braun_terms < 2)
-on-arrival: braun = 1
+on-arrival: braun = 1; wels = 0; breitscheid = 0; pfufl = 0; baade = 0
 go-to: spd_campaign
 
 [? if president != "Braun": It takes effort to run a somewhat unexpected campaign. First, Braun has to be convinced to run. ?] [? if president = "Braun": As he is currently the incumbent, he does not take much convincing the run for a second term. ?]
@@ -80,7 +80,7 @@ The miniscule remnants of the Democratic Party (now called the German State Part
 @breitscheid
 subtitle: A foreign policy expert.
 view-if: year > 1939 and (term_limts != 1 or (term_limits = 1 and breitscheid_terms < 2))
-on-arrival: breitscheid = 1
+on-arrival: breitscheid = 1; braun = 0; wels = 0; pfufl = 0; baade = 0
 go-to: spd_campaign
 
 Breitscheid is one of the SPD's foreign policy experts. His more centrist views may help us in convincing the Centre to support us. [? if eu = 1 and reparations_stopped = 1: He is also credited with improving our relations across Europe, achieving the formation of the European Union and pausing reparations. ?] [? if reichskonkordat = 1: He is also popular among Catholics for the Reichskonkordat. ?]
@@ -90,7 +90,7 @@ The miniscule remnants of the Democratic Party (now called the German State Part
 @pfufl
 subtitle: A woman's rights activist.
 view-if: year > 1939 and (term_limits != 1 or (term_limits = 1 and pfufl_terms < 2)) and w_rights = 1
-on-arrival: pfufl = 1
+on-arrival: pfufl = 1; braun = 0; wels = 0; breitscheid = 0; baade = 0
 go-to: spd_campaign
 
 Pfüfl is one of the party's main women's rights activists. Her selection has been made possible by our constitutional amendment and would be a historic choice, being one of the first women elected for president. The Communists will likely support us if we select her.
@@ -100,7 +100,7 @@ The miniscule remnants of the Democratic Party (now called the German State Part
 @baade
 subtitle: The agricultural expert.
 view-if: year > 1939 and (term_limts != 1 or (term_limits = 1 and baade_terms < 2))
-on-arrival: baade = 1
+on-arrival: baade = 1; braun = 0; wels = 0; breitscheid = 0; pfufl = 0
 go-to: spd_campaign
 
 Fritz Baade is the party's agricultural policy expert. His selection would help massively in rural areas. [? if rural_policy > 1: His popular agricultural policies, which have benefitted both urban and rural areas, will help his campaign. ?]
