@@ -1,1 +1,54 @@
+title: Spanish Civil War
+subtitle: Another democracy falls...
+view-if: year = 1936 and month = 7
+max-visits: 1
+on-arrival: spain_cw = 1
+tags: event
+new-page: true
 
+= Spanish Civil War
+
+Worrying news comes from Spain. Following the victory of the left in the election, as well as increasing violence, has culminated in the breakout of a civil war. Republican forces have managed to hold on to Madrid and Barcelona. However, North Africa, the Canaries and most of western Spain have fallen to Nationalist forces.
+
+Fascist Italy is the only nation to be supoorting the Nationalists, while the Republicans are seeing support from the USSR. The question is, should we support the Republicans or remain neutral?
+
+- @support_eu: Support the Republicans along with the rest of Europe.
+- @support: Support the Republicans.
+- @no_support: Don't support them.
+
+@support_eu
+subtitle: Europe can help, but they have their demands.
+choose-if: eu = 1
+unavailable-subtitle: Europe is not willing to cooperate.
+on-arrival: spain_eu_support = 1; west_relation += 5; east_relation += 5;
+
+With our formation of the EU and overall good relations, we have convinced the rest of Europe to support the Republicans. They do, however, have some reservations. In exchange for support, they have asked the Republicans scale down their radicalism. [? if reichskonkordat = 1: Additionally, the Catholic Church opposes the Republicans due to their attacks on the Church. ?]
+
+- @support_church_centrist: Support them if they dial down their radicalism and church attacks.
+- @support_centrist: Support them if they dial down their radicalism.
+- @support: Forget about Europe.
+
+@support_church_centrist
+subtitle: Ask the Republicans to stop attacking churches and to be less far left.
+view-if: reichskonkordat = 1 and spain_eu_support = 1
+on-arrival: spain_church_centrist = 1
+
+The Republicans have, reluctantly, agreed. The attacks stop and their radical factions die down.
+
+@support_centrist
+subtitle: Ask the Republicans to stop their radicalism.
+on-arrival: spain_centrist = 1
+
+The Republicans have agreed. Radical factions have broken off in response, seizing the southern coast.
+
+@support
+subtitle: We can offer support to the Republicans.
+on-arrival: spain_support = 1
+
+The Republicans accept our support happily. [? if disband_military = 1: However, we are unable to send military assistance due to our disbanding of the Reichswehr. ?]
+
+@no_support
+subtitle: We will remain neutral.
+on-arrival: spain_franco = 1
+
+We choose not to offer support to the Republicans. The Nationalists slowly start making advances.
