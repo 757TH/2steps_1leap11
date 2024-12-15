@@ -57,7 +57,7 @@ We can run our own campaign with our own candidate. Which candidate should we ch
 @wels
 subtitle: He is our popular party leader who is liked by other parties.
 view-if: (year = 1939 and president = "Wels") or year > 1939
-on-arrival: wels = 1
+on-arrival: wels = 1; braun = 0; breitscheid = 0; pfufl = 0; baade = 0
 go-to: spd_campaign
 
 Being our current incumbent, Otto Wels is also our party leader and is the preferred choice of the Centre over other parties.
@@ -66,7 +66,7 @@ The miniscule remnants of the Democratic Party (now called the German State Part
 
 @braun
 subtitle: The current Prussian Minister-President. 
-on-arrival: braun = 1
+on-arrival: braun = 1; wels = 0; breitscheid = 0; pfufl = 0; baade = 0
 go-to: spd_campaign
 
 [? if president != "Braun": It takes effort to run a somewhat unexpected campaign. First, Braun has to be convinced to run. ?] [? if president = "Braun": As he is currently the incumbent, he does not take much convincing the run for a second term. ?]
