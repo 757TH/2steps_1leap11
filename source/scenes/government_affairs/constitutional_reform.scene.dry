@@ -135,6 +135,10 @@ if (Q.z_relation > 49 && (Q.president == "Hindenburg" || Q.president == "Eckener
 !}
 view-if: w_rights = 0
 
+We will enshrine women's rights in the constitution. Abortion will be legalised, divorce made easier and allow women more rights in the family. Women shall also be allowed to hold the offices of President and Chancellor.
+
+The more left leaning parties, the KPD and DDP, support these reforms. On the other hand, the right-wing and religious parties oppose these reforms. [? if reichskonkordat == 1 : Our concordat with the Vatican should blunt the effects of this amendment. ?] [? if reichskonkordat == 0 : The Vatican, and therefore Catholics, should also be unhappy with these developments. ?] [? if z_party_leader = "Kaas" : Due to the Centre's rightwards shift under Kaas, they are also opposed to this reform. ?] [? if z_party_leader = "Joos" : The Centre Party, with Joos as leader, is open to these reforms. Their Bavarian partners are less receptive. ?]
+
 - @womens_rights_2: Call a constitutional referendum to pass the reform!
 - @reforms_menu: See other reform options.
 
@@ -144,10 +148,7 @@ unavailable-subtitle: There is not enough support to pass this amendment.
 on-arrival: constitutional_reform += 1; w_rights = 1
 achievement: verfassungsreform
 
-
- We will enshrine women's rights in the constitution. Abortion will be legalised, divorce made easier and allow women more rights in the family. Women shall also be allowed to hold the offices of President and Chancellor.
-
-The more left leaning parties, the KPD and DDP, support these reforms. On the other hand, the right-wing and religious parties oppose these reforms. [? if reichskonkordat == 1 : Our concordat with the Vatican should blunt the effects of this amendment. ?] [? if reichskonkordat == 0 : The Vatican, and therefore Catholics, should also be unhappy with these developments. ?] [? if z_party_leader = "Kaas" : Due to the Centre's rightwards shift under Kaas, they are also opposed to this reform. ?] [? if z_party_leader = "Joos" : The Centre Party, with Joos as leader, is open to these reforms. Their Bavarian partners are less receptive. ?]
+We have passed a constitutional amendement to give women more rights! The legalisation of abortion is met with horror from right-wing parties. [? if reichskonkordat = 1: The Catholic Church, while unhappy, does not protest too much. ?] Liberals, meanwhile, see this as the beginning of an era of equality.
 
 @constitutional_bans
 
