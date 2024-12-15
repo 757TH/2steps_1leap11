@@ -1,1 +1,36 @@
+title: Italy invades Abyssinia
+subtitle: We must do something...
+view-if: year = 1935 and month = 10 and spd_in_government = 1
+max-visits = 1
+tags: event
+new-page: true
 
+= Italy invades Abyssinia
+
+Italy, Europe's fascist power, has launched colonial expansion into Abyssinia. This move has been condemned by the League of Nations, which we are a member of. Sanctions against the Italians have been suggested. [? if eu = 1: As we have formed a European Union, sanctions should be more effective. ?] What should we do?
+
+The move for sanctions is supported by almost all parties bar the NSDAP and DNVP.
+
+- @sanctions_eu: Sanction Italy with the help of both the League and EU
+- @sanctions_lon: Support the League's sanctions
+- @no_sanctions: Do not join in the sanctions
+
+@sanctions_eu
+subtitle: These will likely be more effective.
+view-if: eu = 1
+on-arrival: eu_sanctions = 1; mussolini_unrest = 1;
+
+Our sanctions against Italy seemed to be working for now. The British and French have been convinced to close the Suez Canal and stop oil exports. The war is going worse for Mussolini, causing unrest back home.
+
+
+@sanctions_lon
+subtitle: The League failed in Manchuria, can it avoid failure here?
+on-arrival: abyssinia_long_war = 1; new_middle_spd -= 10; old_middle_spd -= 10
+
+While the sanctions have slowed the Italian advance, they have not worked as much as they could have. We are losing support for this at home. The League, meanwhile, seems to have failed once more.
+
+@no_sanctions
+subtitle: This will hurt relations internationally.
+on-arrival: rural_spd += 15; west_relation -= 5; east_relation -= 5; abyssinia_falls = 1;
+
+Both our western and eastern neighbours condemn us for this. Abyssinia soon falls, expanding the influence of fascism. The only benefit from this is that rural workers like us more now due to our domestic interests.
