@@ -29,21 +29,23 @@ With our formation of the EU and overall good relations, we have convinced the r
 - @support: Forget about Europe.
 
 @support_church_centrist
-subtitle: Ask the Republicans to stop attacking churches and to be less far left.
-view-if: reichskonkordat = 1 and spain_eu_support = 1
-on-arrival: spain_church_centrist = 1
+subtitle: Ask the Republicans to stop attacking churches and to be less far left. -1 resources.
+view-if: reichskonkordat = 1 and spain_eu_support = 1 and resources > 0
+on-arrival: spain_church_centrist = 1; resources -= 1;
 
 The Republicans have, reluctantly, agreed. The attacks stop and their radical factions die down.
 
 @support_centrist
-subtitle: Ask the Republicans to stop their radicalism.
-on-arrival: spain_centrist = 1
+subtitle: Ask the Republicans to stop their radicalism. -1 resources.
+view-if: resources > 0
+on-arrival: spain_centrist = 1; resources -= 1
 
 The Republicans have agreed. Radical factions have broken off in response, seizing the southern coast.
 
 @support
-subtitle: We can offer support to the Republicans.
-on-arrival: spain_support = 1
+subtitle: We can offer support to the Republicans. -1 resources.
+view-if: resources > 0
+on-arrival: spain_support = 1; resources -= 1; spain_eu_support = 0;
 
 The Republicans accept our support happily. [? if disband_military = 1: However, we are unable to send military assistance due to our disbanding of the Reichswehr. ?]
 
