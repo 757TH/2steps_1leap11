@@ -12,10 +12,10 @@ The Republicans have won the civil war in Spain! With our support, they have tri
 
 [? if spain_support > 0: The 3-year civil war has left many Spanish cities in ruins. The Republicans are asking for additional support to rebuild. Both the church and European nations are not sending assistance to the Republicans due to their radicalism. ?] [? if spain_church_centrist = 1: The 2-year civil war has left many Spanish cities heavily damaged. The Republicans are asking for support in rebuilding them. Both the Church and our fellow EU members have already began sending assistance. ?] [? if spain_centrist = 1: The 2-year civil war has left many Spanish cities heavily damaged. The Republicans are asking for help in rebuilding them. While are fellow EU members have done so, the Church has refused due to the Republicans' attacks on churches. ?]
 
-- @support_no_eu: Accept their requests for additional support
-- @support_no_church: Accept their requests for additional support
-- @support_everyone: Accept their requests for additional support
-- @deny_support: Deny their requests
+- @support_no_eu: Accept their requests for additional support.
+- @support_no_church: Accept their requests for additional support.
+- @support_everyone: Accept their requests for additional support.
+- @deny_support: Deny their requests.
 
 @support_no_eu
 subtitle: Support the Spanish rebuilding alone. -4 resources.
