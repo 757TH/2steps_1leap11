@@ -1,1 +1,13 @@
+title: Mussolini has been overthrown!
+subtitle: A dictatorship falls...
+view-if: mussolini_unrest = 1 and year > 1940
+max-visits: 1
+on-arrival: mussolini_overthrown = 1
+tags: event
+new-page: true
 
+= Mussolini has been overthrown!
+
+After growing unrest due to failures in the Abyssinian war, Mussolini has finally been overthrown. The King has also been forced to abdicate and a republic has been established. 
+
+- @root: An excellent development.
