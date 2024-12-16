@@ -1,1 +1,13 @@
+title: The end of the Disarmament Conference
+subtitle: Something is better than nothing...
+view-if: (year = 1934 and month = 11) and reichswehr_strength >= 50 and reichswehr strength <= 75 and disband_military != 1 and disarmament_withdrawn != 1 and no-disarmament != 1
+max-visits: 1
+on-arrival: d_conf_part_success = 1; pacifism += 1; nationalism -= 7; uk_part_disarmed = 1; workers_spd += 5; new_middle_spd += 5; old_middle_spd += 5; rural_spd += 5; unemployed_spd += 5; catholics_spd += 5;
+tags: event
+new-page: true
 
+= The end of the Disarmament Conference
+
+The Disarmament Conference has ended, and something has been achieved. Chemical warfare and bombing civilians has been banned and the sizes of tanks and bombs restricted. Additionaly, as we reduced the size of the Reichswehr, the British agreed to reduce the size of their army as well. [? if panzerkreuzers_defunded = 1: We also managed to defund the Panzerkreuzers, cancelling their construction. ?]
+
+- @root: At least something was achieved.
