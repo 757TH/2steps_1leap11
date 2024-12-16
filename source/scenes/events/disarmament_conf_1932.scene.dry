@@ -1,1 +1,60 @@
+title: Beginning of the Disarmament Conference
+subtitle: An era of peace?
+view-if: year = 1932 and month = 2 and spd_in_government = 1
+max-visits: 1
+on-arrival: d_conf_began = 1; pacifism += 1
+tags: event
+new-page: true
 
+= Beginning of the Disarmament Conference
+
+On the first of this month, a conference on the matter of disarmament began in Geneva. This will hopefully usher in a new era of peace across the world. Not only are all members of the League of Nations present, but the Americans and the Soviets as well. The only major power not involved is Japan. [? if eu = 1: The formations of the European Union also helps with negotiations. ?]
+
+[? if reichwehr_minister_party != "SPD": While we do not control the Reichswehr Ministry, our role as the largest party in the coalition may give us some leverage, especially if we fork over some resources. ?] [? if reichswehr_minister_party = "SPD": As we control the Reichswehr Ministry, we should be able to easily get what we want. ?] We are widely expected to support disarmament.
+
+- @full_disarmament_rm: Push for full disarmament.
+- @full_disarmament: Push for full disarmament.
+- @partial_disarmament_rm: Push for partial disarmament.
+- @partial_disarmament: Push for partial disarmament.
+- @no_disarmament: Do not disarm.
+- @withdraw: Withdraw from the conference.
+
+@full_disarmament_rm
+subtitle: This will lead to coalition dissent. +5 budget.
+view-if: reichswehr_minister_party = "SPD"
+on-arrival: disband_military = 1; coalition_dissent += 1; reichswehr_strength -= 100; conf_full = 1; budget += 5; reichswehr_loyalty -= 0.2;
+
+With the Reichswehr Ministry, we are able to push for Germany's full disarmament. The Reichswehr is no more. [? if panzerkreuzer_funded = 1 and panzerkreuzer_b_funded = 1: Both Panzerkreuzers, still under construction, have been cancelled. ?] The UK and France have seen our move, and a movement has been sparked in both countries for their disarmament. We are now able to get spend more on social spending.
+
+@full_disarmament
+subtitle: This will lead to coalition dissent. -2 resources, +5 budget.
+view-if: reichswehr_minister_party != "SPD" and resources > 0
+on-arrival: disband_military = 1; coalition_dissent += 1; reichswehr_strength -= 100; conf_full = 1; resources -= 2; budget += 5; reichswehr_loyalty -= 0.2;
+
+While we do not have the Reichswehr Ministry, our resources have managed to convince our partners to disarm, though they are still unhappy. The Reichswehr is no more. [? if panzerkreuzer_funded = 1 and panzerkreuzer_b_funded = 1: Both Panzerkreuzers, still under construction, have been cancelled. ?] The UK and France have seen our move, and a movement has been sparked in both countries for their disarmament. We are now able to get spend more on social spending.
+
+@partial_disarmament_rm
+subtitle: Our coalition partners might tolerate this. +3 budget.
+view-if: reichswehr_minister_party = "SPD"
+on-arrival: partial-disarmament = 1; reichswehr_strength -= 60; reichswehr_loyalty -= 0.1;
+
+With the Reichswehr Ministry, we are able to convince our coalition partners to reduce the Reichswehr's size from 100 to 40 thousand soldiers. Movements are sparked in both the UK and France for them to start disarming. We are now able to get spend more on social spending.
+
+@partial_disarmament_rm
+subtitle: Our coalition partners might tolerate this if we compensate them. -1 resources, +3 budget.
+view-if: reichswehr_minister_party != "SPD" and resources > 0
+on-arrival: partial-disarmament = 1; reichswehr_strength -= 60; resources -= 1; coalition_dissent += 1; budget += 3; reichswehr_loyalty -= 0.1;
+
+While we do not have the Reichswehr Ministry, our resources have managed to convince our partners to partially disarm, though they are still unhappy. With the Reichswehr Ministry, we are able to convince our coalition partners to reduce the Reichswehr's size from 100 to 40 thousand soldiers. Movements are sparked in both the UK and France for them to start disarming. We are now able to get spend more on social spending.
+
+@no_disarmament
+subtitle: This is unexpected, but will please our coaltion partners.
+on-arrival: no-disarmament = 1; reichswehr_loyalty += 0.1;
+
+The Reichswehr and our coaltion partners like us more for this, while this decision is tolerated internationally.
+
+@withdraw
+subtitle: This will have detrimental consequences.
+on-arrival: coaltion_dissent += 2; center_dissent += 10; labor_dissent += 10; reformist_dissent += 10; left_dissent += 10; neorevisionist_dissent += 10; west_relation -= 5; east_relation -= 10; disarmament_withdrawn = 1; reichswehr_loyalty += 0.2; reparations_negotiation -= 10; pacifism -= 2; workers_spd -= 10; new_middle_spd -= 10; old_middle_spd -= 10; rural_spd -= 10; unemployed_spd -=10; catholics_spd -= 10;
+
+This decision is met with shock and horror globally as people wonder just what on earth we were thinking. Dissent across our party and our coaltion skyrockets, with even the right-wing parties condemning this action. Relations with our neighbours plummet, and we lose support for this. Only the Reichswehr is satisfied with this course of action.
