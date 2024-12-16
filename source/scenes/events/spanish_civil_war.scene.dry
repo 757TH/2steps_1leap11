@@ -2,7 +2,7 @@ title: Spanish Civil War
 subtitle: Another democracy falls...
 view-if: year = 1936 and month = 7
 max-visits: 1
-on-arrival: spain_cw = 1
+on-arrival: spain_cw = 1; spain_eu_support = 0; spain_support = 0;
 tags: event
 new-page: true
 
@@ -20,7 +20,7 @@ Fascist Italy is the only nation to be supoorting the Nationalists, while the Re
 subtitle: Europe can help, but they have their demands.
 choose-if: eu = 1
 unavailable-subtitle: Europe is unwilling to cooperate.
-on-arrival: spain_eu_support = 1; west_relation += 5; east_relation += 5;
+on-arrival: spain_eu_support += 1; west_relation += 5; east_relation += 5;
 
 With our formation of the EU and overall good relations, we have convinced the rest of Europe to support the Republicans. They do, however, have some reservations. In exchange for support, they have asked the Republicans scale down their radicalism. [? if reichskonkordat = 1: Additionally, the Catholic Church opposes the Republicans due to their attacks on the Church. ?]
 
@@ -45,7 +45,7 @@ The Republicans have agreed. Radical factions have broken off in response, seizi
 @support
 subtitle: We can offer support to the Republicans. -1 resources.
 view-if: resources > 0
-on-arrival: spain_support = 1; resources -= 1; spain_eu_support = 0;
+on-arrival: spain_support += 1; resources -= 1; spain_eu_support = 0;
 
 The Republicans accept our support happily. [? if disband_military = 1: However, we are unable to send military assistance due to our disbanding of the Reichswehr. ?]
 
