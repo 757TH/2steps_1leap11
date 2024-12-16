@@ -2,7 +2,7 @@ title: Beginning of the Disarmament Conference
 subtitle: An era of peace?
 view-if: year = 1932 and month = 2 and spd_in_government = 1
 max-visits: 1
-on-arrival: d_conf_began = 1; pacifism += 1
+on-arrival: d_conf_began = 1; pacifism += 1; d_conf_ended = 0;
 tags: event
 new-page: true
 
