@@ -232,6 +232,6 @@ Current members: [+ eu_members +].
 @baltics
 title: Invite the Baltic states to the EU
 view-if: year < 1940 and baltics_eu != 1
-on-arrival: baltics_eu = 1; eu_expansion += 1; eu_members = eu_members + ", Lithuania, Latvia, Estonia"
+on-arrival: baltics_eu = 1; eu_expansion += 1; eu_members = "Germany, France, UK, Ireland, Poland, Czechoslovakia, Austria, Netherlands, Belgium, Luxembourg, Denmark, Lithuania, Latvia, Estonia"
 
 The Baltic states have accepted! They hope that this will help protect them against Soviet aggression.
