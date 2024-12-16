@@ -2,7 +2,7 @@ title: Spanish Civil War
 subtitle: Another democracy falls...
 view-if: year = 1936 and month = 7
 max-visits: 1
-on-arrival: spain_cw = 1; spain_eu_support = 0; spain_support = 0;
+on-arrival: spain_cw = 1; spain_eu_support = 0; spain_support = 0; spain_cw_over = 0;
 tags: event
 new-page: true
 
