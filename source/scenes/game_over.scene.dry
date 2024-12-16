@@ -433,6 +433,15 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if game_achievement_roter_alarm_null: **Roter Alarm Null** - discover and complete an impossible plot. ?]
 
+[? if game_achievement_wahlrechts : **Wahlrechts für Frauen** - Marie Juchacz has been elected president. ?]
+
+[? if game_achievement_bundesrepublik : **Bundesrepublik** - Konrad Adenauer or Kurt Schumacher has been elected president, and constitutional reforms have reduced presidential power. ?]
+
+[? if game_achievement_zeppelin_kapitan : **Zeppelinkapitän** - Hugo Eckener has been elected president. ?]
+
+[? if game_achievement_grosse_volkspartei: **Große Volkspartei** - All classes have at least 40% SPD support. ?]
+
+[? if game_achievement_rote_millionar: **Der rote Millionär** - Willi Münzenberg is president. ?]
 
 = Completed Achievements Overall
 
@@ -541,7 +550,17 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if achievement_eher_wie_das_reichsbanned: **Eher wie das Reichsbanned** - ban the Reichsbanner. ?]
 
-[? if (achievement_roter_alarm_null and achievement_eher_wie_das_reichsbanned and achievement_amerikanischen and achievement_fehlende_zundung and achievement_sind_wir_die_bosen and achievement_olympiasieger and achievement_untergang and achievement_burgherburger): **Lasst uns diese Scheiße in Grund und Boden laufen lassen!** - over multiple playthroughs, complete all other achievements of the 'Two Steps Forward, One Leap Below' mod. ?]
+[? if achievement_wahlrechts : **Wahlrechts für Frauen** - Marie Juchacz has been elected president. ?]
+
+[? if achievement_bundesrepublik : **Bundesrepublik** - Konrad Adenauer or Kurt Schumacher has been elected president, and constitutional reforms have reduced presidential power. ?]
+
+[? if achievement_zeppelin_kapitan : **Zeppelinkapitän** - Hugo Eckener has been elected president. ?]
+
+[? if achievement_grosse_volkspartei: **Große Volkspartei** - All classes have at least 40% SPD support. ?]
+
+[? if achievement_rote_millionar: **Der rote Millionär** - Willi Münzenberg is president. ?]
+
+[? if (achievement_rote_millionar and achievement_bundesrepublik and achievement_grosse_volkspartei and achievement_zeppelin_kapitan and achievement_wahlrechts and achievement_roter_alarm_null and achievement_eher_wie_das_reichsbanned and achievement_amerikanischen and achievement_fehlende_zundung and achievement_sind_wir_die_bosen and achievement_olympiasieger and achievement_untergang and achievement_burgherburger): **Lasst uns diese Scheiße in Grund und Boden laufen lassen!** - over multiple playthroughs, complete all other achievements of the 'Two Steps Forward, One Leap Below' mod. ?]
 
 = Incomplete Achievements
 
@@ -649,7 +668,17 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if not achievement_eher_wie_das_reichsbanned: **Eher wie das Reichsbanned** - ban the Reichsbanner. ?]
 
-[? if not (achievement_roter_alarm_null and achievement_amerikanischen and achievement_fehlende_zundung and achievement_sind_wir_die_bosen and achievement_olympiasieger and achievement_untergang and achievement_burgherburger): **Lasst uns diese Scheiße in Grund und Boden laufen lassen!** - over multiple playthroughs, complete all other achievements of the 'Two Steps Forward, One Leap Below' mod. ?]
+[? if not achievement_wahlrechts : **Wahlrechts für Frauen** - Marie Juchacz has been elected president. ?]
+
+[? if not achievement_bundesrepublik : **Bundesrepublik** - Konrad Adenauer or Kurt Schumacher has been elected president, and constitutional reforms have reduced presidential power. ?]
+
+[? if not achievement_zeppelin_kapitan : **Zeppelinkapitän** - Hugo Eckener has been elected president. ?]
+
+[? if not achievement_grosse_volkspartei: **Große Volkspartei** - All classes have at least 40% SPD support. ?]
+
+[? if not achievement_rote_millionar: **Der rote Millionär** - Willi Münzenberg is president. ?]
+
+[? if not (achievement_rote_millionar and achievement_bundesrepublik and achievement_grosse_volkspartei and achievement_zeppelin_kapitan and achievement_wahlrechts and achievement_roter_alarm_null and achievement_amerikanischen and achievement_fehlende_zundung and achievement_sind_wir_die_bosen and achievement_olympiasieger and achievement_untergang and achievement_burgherburger): **Lasst uns diese Scheiße in Grund und Boden laufen lassen!** - over multiple playthroughs, complete all other achievements of the 'Two Steps Forward, One Leap Below' mod. ?]
 
 @end_game
 game-over: true
