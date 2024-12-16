@@ -19,7 +19,7 @@ The Republicans have won the civil war in Spain! With our support, they have tri
 
 @support_no_eu
 subtitle: Support the Spanish rebuilding alone. -4 resources.
-view-if: spain_support > 0 and resources > 3;
+view-if: spain_support > 0 and resources > 3
 on-arrival: spain_rebuilt = 1; resources -= 4;
 
 This is costly, but our help is appreciated. Spain slowly begins rebuilding.
@@ -27,7 +27,7 @@ This is costly, but our help is appreciated. Spain slowly begins rebuilding.
 @support_no_church
 subtitle: Join in the EU's assistance. -2 resources.
 view-if: spain_centrist = 1 and resources > 1
-on-arrival: spain_rebuilt = 1; resources -= 2
+on-arrival: spain_rebuilt = 1; resources -= 2;
 
 The EU's extra assistance helps reduce the costs for us, and Spain is happy with the support.
 
