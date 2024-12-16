@@ -19,7 +19,7 @@ Fascist Italy is the only nation to be supoorting the Nationalists, while the Re
 @support_eu
 subtitle: Europe can help, but they have their demands.
 choose-if: eu = 1
-unavailable-subtitle: Europe is not willing to cooperate.
+unavailable-subtitle: Europe is unwilling to cooperate.
 on-arrival: spain_eu_support = 1; west_relation += 5; east_relation += 5;
 
 With our formation of the EU and overall good relations, we have convinced the rest of Europe to support the Republicans. They do, however, have some reservations. In exchange for support, they have asked the Republicans scale down their radicalism. [? if reichskonkordat = 1: Additionally, the Catholic Church opposes the Republicans due to their attacks on the Church. ?]
