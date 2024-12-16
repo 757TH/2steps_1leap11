@@ -5,6 +5,7 @@ max-visits: 1
 on-arrival: mussolini_overthrown = 1
 tags: event
 new-page: true
+face-image: img/mussolini.jpg
 
 = Mussolini has been overthrown!
 
