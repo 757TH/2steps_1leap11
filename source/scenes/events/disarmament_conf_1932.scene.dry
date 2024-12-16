@@ -22,28 +22,28 @@ On the first of this month, a conference on the matter of disarmament began in G
 @full_disarmament_rm
 subtitle: This will lead to coalition dissent. +5 budget.
 view-if: reichswehr_minister_party = "SPD"
-on-arrival: disband_military = 1; coalition_dissent += 1; reichswehr_strength -= 100; conf_full = 1; budget += 5; reichswehr_loyalty -= 0.2; panzerkreuzer_funded = 0; panzerkreuzer_b_funded = 0;
+on-arrival: disband_military = 1; coalition_dissent += 1; reichswehr_strength -= 100; conf_full = 1; budget += 5; reichswehr_loyalty -= 0.2; panzerkreuzer_funded = 0; panzerkreuzer_b_funded = 0; west_relation += 10; east_relation += 10;
 
 With the Reichswehr Ministry, we are able to push for Germany's full disarmament. The Reichswehr is no more. [? if panzerkreuzer_funded = 1 and panzerkreuzer_b_funded = 1: Both Panzerkreuzers, still under construction, have been cancelled. ?] The UK and France have seen our move, and a movement has been sparked in both countries for their disarmament. We are now able to get spend more on social spending.
 
 @full_disarmament
 subtitle: This will lead to coalition dissent. -2 resources, +5 budget.
 view-if: reichswehr_minister_party != "SPD" and resources > 0
-on-arrival: disband_military = 1; coalition_dissent += 1; reichswehr_strength -= 100; conf_full = 1; resources -= 2; budget += 5; reichswehr_loyalty -= 0.2; panzerkreuzer_funded = 0; panzerkreuzer_b_funded = 0;
+on-arrival: disband_military = 1; coalition_dissent += 1; reichswehr_strength -= 100; conf_full = 1; resources -= 2; budget += 5; reichswehr_loyalty -= 0.2; panzerkreuzer_funded = 0; panzerkreuzer_b_funded = 0; west_relation += 10; east_relation += 10;
 
 While we do not have the Reichswehr Ministry, our resources have managed to convince our partners to disarm, though they are still unhappy. The Reichswehr is no more. [? if panzerkreuzer_funded = 1 and panzerkreuzer_b_funded = 1: Both Panzerkreuzers, still under construction, have been cancelled. ?] The UK and France have seen our move, and a movement has been sparked in both countries for their disarmament. We are now able to get spend more on social spending.
 
 @partial_disarmament_rm
 subtitle: Our coalition partners might tolerate this. +3 budget.
 view-if: reichswehr_minister_party = "SPD"
-on-arrival: partial-disarmament = 1; reichswehr_strength -= 60; reichswehr_loyalty -= 0.1;
+on-arrival: partial-disarmament = 1; reichswehr_strength -= 60; reichswehr_loyalty -= 0.1; west_relation += 5; east_relation += 5;
 
 With the Reichswehr Ministry, we are able to convince our coalition partners to reduce the Reichswehr's size from 100 to 40 thousand soldiers. Movements are sparked in both the UK and France for them to start disarming. We are now able to get spend more on social spending.
 
 @partial_disarmament
 subtitle: Our coalition partners might tolerate this if we compensate them. -1 resources, +3 budget.
 view-if: reichswehr_minister_party != "SPD" and resources > 0
-on-arrival: partial-disarmament = 1; reichswehr_strength -= 60; resources -= 1; coalition_dissent += 1; budget += 3; reichswehr_loyalty -= 0.1;
+on-arrival: partial-disarmament = 1; reichswehr_strength -= 60; resources -= 1; coalition_dissent += 1; budget += 3; reichswehr_loyalty -= 0.1; west_relation += 5; east_relation += 5;
 
 While we do not have the Reichswehr Ministry, our resources have managed to convince our partners to partially disarm, though they are still unhappy. With the Reichswehr Ministry, we are able to convince our coalition partners to reduce the Reichswehr's size from 100 to 40 thousand soldiers. Movements are sparked in both the UK and France for them to start disarming. We are now able to get spend more on social spending.
 
