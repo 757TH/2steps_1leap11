@@ -10,4 +10,36 @@ new-page: true
 
 The Republicans have won the civil war in Spain! With our support, they have triumphed over the forces of General Franco, who emerged as the leader of the Nationalists after the suspicious deaths of his opponents. Franco has gone into hiding, but has been sentenced to death in absentia by the ICJ. [? if spain_eu_support > 0: The dissendent radicals, meanwhile, have recieved prison sentences for treason. ?] The neighbouring Estado Novo regime in Portugal watches these developments with worry. [? if spain_eu_support > 0: However, with the support of the EU, they do not dare act. ?]
 
-[? if spain_support > 0: The 3-year civil war has left many Spanish cities in ruins. The Republicans are asking for additional support to rebuild. Additionally, both the church and European nations are unhappy ?] [? if spain_church_centrist = 1: The 2-year civil war has left many Spanish cities heavily damaged. The Republicans are asking for support in rebuilding them. Both the Church and our fellow EU members have already began sending assistance. ?] [? if spain_centrist = 1: The 2-year civil war has left many Spanish cities heavily damaged. The Republicans are asking for help in rebuilding them. While are fellow EU members have done so, the Church has refused due to the Republicans' attacks on churches. ?]
+[? if spain_support > 0: The 3-year civil war has left many Spanish cities in ruins. The Republicans are asking for additional support to rebuild. Both the church and European nations are not sending assistance to the Republicans due to their radicalism. ?] [? if spain_church_centrist = 1: The 2-year civil war has left many Spanish cities heavily damaged. The Republicans are asking for support in rebuilding them. Both the Church and our fellow EU members have already began sending assistance. ?] [? if spain_centrist = 1: The 2-year civil war has left many Spanish cities heavily damaged. The Republicans are asking for help in rebuilding them. While are fellow EU members have done so, the Church has refused due to the Republicans' attacks on churches. ?]
+
+- @support_no_eu: Accept their requests for additional support
+- @support_no_church: Accept their requests for additional support
+- @support_everyone: Accept their requests for additional support
+- @deny_support: Deny their requests
+
+@support_no_eu
+subtitle: Support the Spanish rebuilding alone. -4 resources.
+view-if: spain_support > 0 and resources > 3;
+on-arrival: spain_rebuilt = 1; resources -= 4;
+
+This is costly, but our help is appreciated. Spain slowly begins rebuilding.
+
+@support_no_church
+subtitle: Join in the EU's assistance. -2 resources.
+view-if: spain_centrist = 1 and resources > 1
+on-arrival: spain_rebuilt = 1; resources -= 2
+
+The EU's extra assistance helps reduce the costs for us, and Spain is happy with the support.
+
+@support_everyone
+subtitle: Join in the assistance of the Church and EU. -1 resources.
+view-if: spain_church_centrist = 1 and resources > 0
+on-arrival: spain_rebuilt = 1; resources -= 1
+
+Our assistance, along with that of the Church and EU, helps Spain rebuild quickly. The Republican leadership is happy, and promises to fix constitutional loopholes.
+
+@deny_support
+subtitle: We cannot help them.
+on-arrival: spain_rebuilt = 0
+
+Spain is unhappy with our denial.
