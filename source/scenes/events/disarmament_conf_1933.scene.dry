@@ -1,1 +1,46 @@
 title: The Disarmament Conference
+subtitle: The Conference continues...
+view-if: d_conf_began = 1 and d_conf_ended != 1 and year = 1933 and month = 2 and disband_military != 1 and disarmament_withdrawn != 1
+max-visits: 1
+on-arrival: pacifism += 1
+tags: event
+new-page: true
+
+= The Disarmament Conference
+
+As the disarmament Conference drags on, the prospect of full disarmament seems to be bleaker. [? if partial_disarmament = 1: However, our partial disarmament has inspired many others to do the same, with the British reducing the size of their army. ?]
+
+As our Panzerkreuzer A nears completion, we could disarm by declaring full disarmament, or declare limited disarmament.
+
+- @full_disarmament_1933: Disarm fully.
+- @partial_disarmament_1933: Disarm partially.
+- @cancel_panzerkreuzer: Cancel the Panzerkreuzers.
+- @no_disarmament_1933: Do not disarm.
+
+@full_disarmament_1933
+subtitle: This would be celebrated internationally.
+view-if: spd_in_government = 1 and disband_military != 1 and reichswehr_strength > 0
+on-arrival: disband_military = 1; reichswehr_strength = reichswehr_strength - reichswehr strength; pacifism += 2; reichswehr_loyalty -= 0.2; panzerkreuzer_funded = 0; panzerkreuzer_b_funded = 0; budget += reichswehr_strength/20; coalition_dissent += 1; west_relation += 8; east_relation += 8; panzerkreuzers_defunded = 1;
+
+While it angers our coaltion partners and the Reichswehr, our neighbours are pleased and inspired by our actions. Both the Reichswehr and Reichsmarine have been disbanded. We now have more money for social spending.
+
+@partial_disarmament_1933
+subtitle: We can partially disarm the Reichswehr.
+view-if: reichswehr_strength > 20 and spd_in_government = 1
+on-arrival: reichswehr_strength -= 20; pacifism += 1; reichswehr_loyalty -= 0.1; budget += 1; west_relation += 4; east_relation += 4;
+
+We reduce the size of the Reichswehr by 20 thousand soldiers to happiness from other nations and unhappiness from the Reichswehr. We can now spend more on social spending.
+
+@cancel_panzerkreuzer
+subtitle: We can cancel the Panzerkreuzers.
+view-if: panzerkreuzer_funded = 1 and panzerkreuzer_b_funded = 1
+on-arrival: panzerkreuzer_funded = 0; panzerkreuzer_b_funded = 0; reichswehr_loyalty -= 0.1; pacifism += 1; budget += 1; west_relation += 2; east_relation += 2; panzerkreuzers_defunded = 1;
+
+We cancel the Panzerkreuzers which are under construction as well as the ones which are still being planned. The army dislikes this, but our neighbours do. These actions also allow for more social spending.
+
+@no_disarmament_1933
+subtitle: Do not disarm
+view-if: reichswehr_strength > 0
+on-arrival: no-disarmament = 1; reichswehr_loyalty += 0.1; east_relation -= 1;
+
+While our eastern neighbours are slightly unhappy, the Reichswehr is pleased with our choice.
