@@ -2,7 +2,7 @@ title: The Death of Paul Levi
 view-if: year == 1930 and month >= 2
 frequency: 1000
 max-visits: 1
-on-arrival: levi_dead = 1; n_advisors -= 1 if levi_advisor == 1; levi_advisor = 0; hindenburg_terms = 1; bruning_terms = 0; braun_terms = 0; wels_terms = 0; breitscheid_terms = 0; pfufl_terms = 0; baade_terms = 0;
+on-arrival: levi_dead = 1; n_advisors -= 1 if levi_advisor == 1; levi_advisor = 0; hindenburg_terms = 1; bruning_terms = 0; braun_terms = 0; wels_terms = 0; breitscheid_terms = 0; pfufl_terms = 0; baade_terms = 0; juchacz_terms = 0; eckener_terms = 0; munzenberg_terms = 0; thalmann_terms = 0; schumacher_terms = 0; adenauer_terms = 0; seldte_terms = 0; hitler_terms = 0; goring_terms = 0; gessler_terms = 0;
 tags: event
 
 Paul Levi, a leader of the left wing of our party, has died in an unfortunate accident. He will be missed.
