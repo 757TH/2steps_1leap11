@@ -9,3 +9,5 @@ new_page: true
 = The end of the Disarmament Conference.
 
 [? if disarmament_withdrawn != 0: The Disarmament Conference has ended, and the prospect for disarmament seems bleak. Basically nothing has been achieved due to disagreements. ?] [if reichswehr_strength < 100 and disarmament_withdrawn != 1: We have, at least, managed to reduce the size of the Reichswehr. ?] [? if panzerkreuzers_defunded = 1 and disarmament_withdrawn != 1: We have cancelled the Panzerkreuzers, meaning that we have disarmed to an extent. ?] [if disarmament_withdrawn = 1: The Disarmament Conference has ended, turning into another failure for the League of Nations, with almost nothing being achieved. Since we withdrew from the Conference 2 years ago, part of the blame is put on us. ?]
+
+- @root: Can the League ever succeed?
