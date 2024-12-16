@@ -220,7 +220,7 @@ A major component of the union is the free movement of people and goods across t
 Fascist Italy remains a problem, and the Soviet Union also lies outside the system. But for now, there is new hope for peace and prosperity throughout the continent.
 
 @eu_expansion
-title: Expand the European Union
+title: Expand the European Union.
 view-if: eu = 1
 
 While we have formed an European Union, it does not yet cover the whole continent. We can solve this by expanding it.
@@ -230,7 +230,7 @@ Current members: [+ eu_members +].
 - @baltics
 
 @baltics
-title: Invite the Baltic states to the EU
+title: Invite the Baltic states to the EU.
 view-if: year < 1940 and baltics_eu != 1
 on-arrival: baltics_eu = 1; eu_expansion += 1; eu_members = "Germany, France, UK, Ireland, Poland, Czechoslovakia, Austria, Netherlands, Belgium, Luxembourg, Denmark, Lithuania, Latvia, Estonia"
 
