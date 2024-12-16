@@ -40,7 +40,7 @@ on-arrival: partial-disarmament = 1; reichswehr_strength -= 60; reichswehr_loyal
 
 With the Reichswehr Ministry, we are able to convince our coalition partners to reduce the Reichswehr's size from 100 to 40 thousand soldiers. Movements are sparked in both the UK and France for them to start disarming. We are now able to get spend more on social spending.
 
-@partial_disarmament_rm
+@partial_disarmament
 subtitle: Our coalition partners might tolerate this if we compensate them. -1 resources, +3 budget.
 view-if: reichswehr_minister_party != "SPD" and resources > 0
 on-arrival: partial-disarmament = 1; reichswehr_strength -= 60; resources -= 1; coalition_dissent += 1; budget += 3; reichswehr_loyalty -= 0.1;
