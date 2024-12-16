@@ -20,7 +20,7 @@ As our Panzerkreuzer A nears completion, we could disarm by declaring full disar
 @full_disarmament_1933
 subtitle: This would be celebrated internationally.
 view-if: spd_in_government = 1 and disband_military != 1 and reichswehr_strength > 0
-on-arrival: disband_military = 1; reichswehr_strength = reichswehr_strength - reichswehr strength; pacifism += 2; reichswehr_loyalty -= 0.2; panzerkreuzer_funded = 0; panzerkreuzer_b_funded = 0; budget += reichswehr_strength/20; coalition_dissent += 1; west_relation += 8; east_relation += 8; panzerkreuzers_defunded = 1;
+on-arrival: disband_military = 1; reichswehr_strength = 0; pacifism += 2; reichswehr_loyalty -= 0.2; panzerkreuzer_funded = 0; panzerkreuzer_b_funded = 0; budget += reichswehr_strength/20; coalition_dissent += 1; west_relation += 8; east_relation += 8; panzerkreuzers_defunded = 1;
 
 While it angers our coaltion partners and the Reichswehr, our neighbours are pleased and inspired by our actions. Both the Reichswehr and Reichsmarine have been disbanded. We now have more money for social spending.
 
