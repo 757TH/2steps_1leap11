@@ -1,1 +1,13 @@
 title: The end of the Disarmament Conference
+subtitle: The League finally succeeds...
+view-if: (year = 1933 and month = 1) or (year = 1934 and month = 11) and disarmament_withdrawn != 1 and disband_military = 1 or reichswehr_strength < 50
+max-visits: 1
+on-arrival: d_conf_ended = 1; pacifism += 2; nationalism -= 15; d_conf_success = 1; uk_disarmed = 1 if disband_military = 1; france_disarmed = 1 if disband_military = 1; workers_spd += 10; new_middle_spd += 10; old_middle_spd += 10; rural_spd += 10; unemployed_spd += 10; catholics_spd += 10
+tags: event
+new-page: true
+
+= The end of the Disarmament Conference
+
+The Disarmament Conference has ended in a success for the League of Nations. Not only has it succeeded in banning chemical warfare, limiting tank and bomb sizes and prohibiting other actions in war, it has also managed to get several nations, like Swizterland to disarm entirely. [? if disband_military = 1: After we disbanded the Reichswehr, the already large movement for disarmament in both the UK and France grew larger, prompting them to disarm as well. Our eastern neighbours have also disarmed upon our decision to do so. The Soviets and Americans have disarmed to a limited level. ?] [? if panzerkreuzers_defunded = 1: With our cancellation of the Panzerkreuzers, the rest of the Reichsmarine has been disbanded. ?]
+
+- @root: A period of peace settles over Europe.
