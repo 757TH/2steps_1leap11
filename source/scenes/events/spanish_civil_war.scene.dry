@@ -33,7 +33,7 @@ subtitle: Ask the Republicans to stop attacking churches and to be less far left
 view-if: reichskonkordat = 1 and spain_eu_support = 1 and resources > 0
 on-arrival: spain_church_centrist = 1; resources -= 1;
 
-The Republicans have, reluctantly, agreed. The attacks stop and their radical factions die down.
+The Republicans have, reluctantly, agreed. The attacks stop and their radical factions die down. In response, radicals seize the southern coast.
 
 @support_centrist
 subtitle: Ask the Republicans to stop their radicalism. -1 resources.
