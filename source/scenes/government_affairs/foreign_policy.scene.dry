@@ -225,8 +225,6 @@ view-if: eu = 1
 
 While we have formed an European Union, it does not yet cover the whole continent. We can solve this by expanding it.
 
-Current members: [+ eu_members +].
-
 - @baltics
 - @scandinavia
 - @spain
@@ -246,13 +244,6 @@ max-visits: 1
 on-arrival: baltics_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
 
 The Baltic states have accepted! They hope that this will help protect them against Soviet aggression.
-
-@scandinavia
-title: Invite the Scandinavian nations to the EU.
-max-visits: 1
-on-arrival: scandinavia_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 2;
-
-Scandinavia has accepted our invitation. As one of Europe's more peaceful and liberal areas, their membership is welcomed. [? if year < 1939 = Finland's government, worried about potential Soviet aggression, is glad to have extra protection. ?]
 
 @spain
 title: Invite Spain to the EU.
