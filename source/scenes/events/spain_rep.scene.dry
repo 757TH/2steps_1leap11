@@ -2,7 +2,7 @@ title: Republican forces triumph in Spain!
 subtitle: Our contributions have paid off!
 view-if: (year = 1938 and month = 6 and spain_eu_support > 0) or (year = 1939 and month = 10 and spain_support > 0)
 max-visits: 1
-on-arrival: republican_victory = 1; spain_cw_over = 1
+on-arrival: republican_victory = 1; spain_cw_over = 1; francoist_victory = 0;
 tags: event
 new-page: true
 
