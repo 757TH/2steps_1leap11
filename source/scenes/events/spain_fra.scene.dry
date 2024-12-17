@@ -2,7 +2,7 @@ title: Republican forces defeated in Spain
 subtitle: The beginning of a dictatorship...
 view-if: year = 1939 and month = 10 and spain_support < 1 and spain_eu_support < 1 and spain_franco = 1
 max-visits: 1
-on-arrival: francoist_victory = 1; spain_cw_over = 1
+on-arrival: francoist_victory = 1; spain_cw_over = 1; republican_victory = 0;
 tags: event
 new-page: true
 
