@@ -251,7 +251,7 @@ on-arrival: scandinavia_eu = 1; eu_expansion += 1; pro_republic += 5; nationalis
 Scandinavia has accepted our invitation. As one of Europe's more peaceful and liberal areas, their membership is welcomed. [? if year < 1939: Finland's government, worried about potential Soviet aggression, is glad to have extra protection. ?]
 
 @spain
-view-if: year > 1941 and spain_cw_over = 1 and republican_victory = 1 and francoist_victory = 0 and spain_eu_support > 0 and spain_support < 1
+choose-if: year > 1941 and spain_cw_over = 1 and republican_victory = 1 and francoist_victory = 0 and spain_eu_support > 0 and spain_support < 1
 unavailable-subtitle: [? if year < 1936 : The government is too unstable. ?] [? if spain_cw = 1 and spain_cw_over = 0 : The ongoing civil war makes this impossible. ?] [? if francoist_victory = 1 : We cannot invite a dictator into the EU. ?] [? if republican_victory = 1 and year < 1942 : They are undergoing reconstruction and not ready to join. ?] [? if spain_eu_support < 1 : Our EU partners consider Spain too radical. ?]
 max-visits: 1
 on-arrival: spain_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
@@ -259,7 +259,7 @@ on-arrival: spain_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5
 Spain has accepted our invitation. With the nation mostly reconstructed from the civil war's destruction, EU membership will help the reconstruction finish and the nation prosper.
 
 @italy
-view-if: mussolini_overthrown = 1
+choose-if: mussolini_overthrown = 1
 unavailable-subtitle: We cannot invite a fascist dictator.
 max-visits: 1
 on-arrival: italy_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
@@ -273,7 +273,7 @@ on-arrival: balkans_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -=
 The Balkan nations, except Hungary, have accepted. Bulgaria, Romania, Albania and Yugoslavia have joined.
 
 @greece
-view_if: year < 1936
+choose_if: year < 1936
 unavailable-subtitle: The Hellenic Republic has been overthrown.
 max-visits: 1
 on-arrival: greece_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
@@ -281,7 +281,7 @@ on-arrival: greece_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 
 Greece has accepted our invitation. With them still being in a poor economic state, their membership should help them recover.
 
 @portugal
-view-if: disband_military > 1
+choose-if: disband_military > 1
 unavailable-subtitle: [if year < 1933 : The Ditadura Nacional is not willing to cooperate with socialists. ?] [? if year > 1932 : The Estado Novo is unwilling to cooperate with socialists. ?]
 max-visits: 1
 on-arrival: portugal_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
@@ -289,14 +289,14 @@ on-arrival: portugal_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -
 If you are seeing this, something has gone wrong.
 
 @hungary
-view-if: disband_military > 1
+choose-if: disband_military > 1
 unavailable-subtitle: Horthy does not wish to cooperate.
 on-arrival: hungary_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
 
 If you are seeing this, something has gone wrong.
 
 @ussr
-view-if: disband_military > 1
+choose-if: disband_military > 1
 unavailable-subtitle: Both our EU partners and the Soviets are firmly against the idea.
 max-visits: 1
 on-arrival: ussr_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
@@ -304,7 +304,7 @@ on-arrival: ussr_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5;
 If you are seeing this, something has gone wrong.
 
 @switzerland
-view-if: disband_military > 1
+choose-if: disband_military > 1
 unavailable-subtitle: The majority of the Swiss population does not support this.
 max-visits: 1
 on-arrival: switzerland_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
