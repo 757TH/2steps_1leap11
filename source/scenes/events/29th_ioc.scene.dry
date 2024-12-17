@@ -2,7 +2,6 @@ title: The 29th IOC Conference
 subtitle: A chance to host the Olympics...
 view-if: year = 1931 and month = 5
 max-visits: 1
-on-arrival: ioc_seen = 1
 tags: event
 new-page: true
 
