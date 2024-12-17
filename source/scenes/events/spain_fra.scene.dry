@@ -1,1 +1,13 @@
+title: Republican forces defeated in Spain
+subtitle: The beginning of a dictatorship...
+view-if: year = 1939 and month = 10 and spain_support < 1 and spain_eu_support < 1 and spain_franco = 1
+max-visits: 1
+on-arrival: francoist_victory = 1; spain_cw_over = 1
+tags: event
+new-page: true
 
+= Republican forces defeated in Spain
+
+Franco has triumphed in Spain. The general, who came to power after the suspicious deaths of his opponents, gave a speech in Madrid today declaring the start of a new era. The Iberian Peninsula seems to have fallen to dictatorship.
+
+- @root: Yet another dictatorship...
