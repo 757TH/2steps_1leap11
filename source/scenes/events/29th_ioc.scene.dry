@@ -1,10 +1,18 @@
 title: The 29th IOC Conference
 subtitle: A chance to host the Olympics...
-view-if: year = 1931 and month = 4
+view-if: year = 1931 and month = 4 and berlin_bid = 1
 max-visits: 1
 tags: event
 new-page: true
 
 = The 29th IOC Conference
 
-After last year's 
+After last year's IOC Conference, when we applied Berlin to host the 1936 Olympics, all but 2 of the bids have been withdrawn. Barcelona and Berlin are the only two remaining cities. The current instability of Spain is likely going to turn to vote in our favour.
+
+- @berlin_success: Let the vote begin.
+
+@berlin_success
+subtitle: The results come in...
+on-arrival: berlin_host = 1; coalition_dissent -= 1; workers_spd += 3; new_middle_spd += 3; old_middle_spd += 3; rural_spd += 3; unemployed_spd += 3; catholics_spd += 3;
+
+Berlin has won the vote to host the 1936 Summer Olympics! This is a major success for us, boosting our support.
