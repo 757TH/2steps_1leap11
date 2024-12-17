@@ -1,1 +1,19 @@
+title: The 28th IOC Conference
+view-if: year = 1930 and month = 4
+max-visits: 1
+tags: event
+new-page: true
 
+= The 28th IOC Conference
+
+The 28th Conference of the International Olympic Committee takes place this year in Berlin. Many cities, including Barcelona and Rome, have already annouced their bids to host the 1936 Summer Olympics.
+
+We could also announce a bid. Hosting the Olympics and being successful would give us a boost.
+
+- @bid: Announce a bid for Berlin to hold the Olympics.
+- @root: Do not bid to host the Olympics.
+
+@bid
+on-arrival: berlin_bid = 1
+
+We have bid Berlin to host the Olympics. Additionally, Frankfurt, Nuremberg and Köln also announce their bids, though they soon withdraw. The host city will be selected at next year's conference.
