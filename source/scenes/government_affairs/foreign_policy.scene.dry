@@ -245,6 +245,13 @@ on-arrival: baltics_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -=
 
 The Baltic states have accepted! They hope that this will help protect them against Soviet aggression.
 
+@scandinavia
+title: Invite the Scandinavian nations to the EU.
+max-visits: 1
+on-arrival: scandinavia_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 2;
+
+Scandinavia has accepted our invitation. As one of Europe's more peaceful and liberal areas, their membership is welcomed. [? if year < 1939 = Finland's government, worried about potential Soviet aggression, is glad to have extra protection. ?]
+
 @spain
 title: Invite Spain to the EU.
 view-if: year > 1941 and spain_cw_over = 1 and republican_victory = 1 and francoist_victory = 0 and spain_eu_support > 0 and spain_support < 1
@@ -275,7 +282,7 @@ title: Invite Greece to the EU.
 view_if: year < 1936
 unavailable-subtitle: The Hellenic Republic has been overthrown.
 max-visits: 1
-on-arrival: greece_eu; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
+on-arrival: greece_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
 
 Greece has accepted our invitation. With them still being in a poor economic state, their membership should help them recover.
 
