@@ -24,6 +24,8 @@ Foreign: [+ foreign_minister_party +]
 
 Reichswehr: [+ reichswehr_minister_party +]
 
+Transport: [+ transport_minister_party +]
+
 Agriculture: [+ agriculture_minister_party +]
 
 - @shuffle: Yes, do it.
