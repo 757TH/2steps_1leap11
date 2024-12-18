@@ -1299,6 +1299,18 @@ tags: mins_1928
 
 Fritz Baade of the SPD has been appointed Agriculture Minister.
 
+@transport
+title: Transport Ministry
+subtitle: The Ministry responsible for Germany's infrastructure is not typically our domain.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 10
+view-if: transport_minister_party != "SPD"
+on-arrival: leverage -= 10; transport_minister_party = "SPD"; transport_minister = "Bauer"
+go-to: ministries
+
+Gustav Bauer of the SPD has been appointed Transport Minister.
+
 @reichswehr
 title: Reichswehr Ministry
 subtitle: The Ministry responsible for the armed forces is not typically our domain; General Groener and the bourgeois-conservatives will be displeased.
@@ -1366,6 +1378,13 @@ go-to: ministries
 title: Drop the Agriculture Ministry.
 view-if: agriculture_minister_party = "SPD"
 on-arrival: agriculture_minister_party = ddp_name; agriculture_minister = "Dietrich"; leverage += 10; agriculture_minister_party = "Z" if in_weimar_coalition; agriculture_minister = "Hermes" if in_weimar_coalition
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_transport
+title: Drop the Transport Ministry.
+view-if: transport_minister_party = "SPD"
+on-arrival: transport_minister_party = "Z"; transport_minister = "von Guérard"; leverage += 10;
 tags: drop_mins_1928
 go-to: ministries
 
