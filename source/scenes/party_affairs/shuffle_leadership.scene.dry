@@ -261,6 +261,15 @@ go-to: rm_main
 
 Radbruch has been removed as an advisor. 
 
+@remove_bauer
+title: Remove Bauer
+view-if: bauer_advisor = 1
+tags: remove_advisor
+on-arrival: bauer_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+Bauer has been removed as an advisor. 
+
 
 
 
