@@ -601,7 +601,6 @@ tags: nonfactional_advisor
 
 Gustav Radbruch is now an advisor.
 
-
 @add_stampfer
 title: Friedrich Stampfer
 subtitle: Friedrich Stampfer is the long-time editor-in-chief of Vorwärts, our party newspaper. {!<br><br>!}[? if difficulty < 0 : Actions - Media, Editorial Line, Cooperation with the KPD ?]
@@ -614,4 +613,14 @@ tags: nonfactional_advisor
 
 Friedrich Stampfer is now an advisor.
 
+@add_bauer
+title: Gustav Bauer
+subtitle: Gustav Bauer was our Minister of Transport and former Chancellor. {!<br><br>!}[? if difficulty < 0 : Actions - Transport Policy, Party Disunity ?]
+is-card: true
+card-image: img/portraits/BauerGustav.jpg
+view-if: bauer_advisor = 0 and n_advisors < 3
+on-arrival: bauer_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: nonfactional_advisor
 
+Gustav Bauer is now an advisor.
