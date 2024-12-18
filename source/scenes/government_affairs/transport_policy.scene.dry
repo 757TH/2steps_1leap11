@@ -1,1 +1,158 @@
+title: Transport Policy
+new-page: true
+is-card: true
+on-arrival: transport_policy_timer += 6; month_actions += 1
+view-if: spd_in_government = 1 and (transport_minister_party = "SPD") and transport_policy_timer == 0
+card-image: img/portraits/BauerGustav.jpg
+tags: govt_affairs
 
+= Transport Policy
+
+While we have not historically been in control of transport, we can now do what we want with it. We can choose what to do with Germany's aviation, rail, road and shipping. [? if reparations_stopped != 1: Due to our ongoing reparations, we have limited control of the railways. ?] Additionally, the ministry gives us control over construction.
+
+- @rail: Change our rail policy.
+- @shipping: Change our shipping policy.
+- @air: Change our air travel policy.
+- @road: Change our roads.
+- @construction: Build for the Olympics.
+- @root: No change to policy for now.
+- @easy_discard
+
+@rail
+choose-if: reparations_stopped != 1
+unavailable-subtitle: We do not have enough control over the railways.
+
+The Reichsbahn is Germany's rail company. We can choose what we do with it.
+
+- @expand: Expand the Reichsbahn.
+- @defund: Defund the Reichsbahn.
+- @electrify: Electrify the Reichsbahn.
+
+@expand
+choose-if: budget > 0
+subtitle: Expand and improve the Reichsbahn. -1 budget.
+unavailable-subtitle: Not enough budget.
+on-arrival: reichsbahn += 1; budget -= 1; unemployed -= 1;
+
+We expand the German railway network and improve its service and timeliness. The expansion allows us to employ more people.
+
+@defund
+subtitle: Decrease the size of the Reichsbahn. +1 budget.
+on-arrival: reichsbahn -= 1; budget += 1; unemployed += 1;
+
+The Reichsbahn's performance decreases and some lose their jobs, but we now have more money for social spending.
+
+@electrify
+subtitle: Start the Reichsbahn's electrification. -2 budget.
+view-if: year > 1957 and budget > 1
+on-arrival: reichsbahn_electrified = 1; budget -= 2; new_middle_spd += 10; old_middle_spd += 10; workers_spd += 5;
+
+We start to electrify the Reichsbahn to the happiness of enivronmentalists. While the movement is still in its infancy, we have shown that it can be influential.
+
+@shipping
+
+We can change Germany's shipping network.
+
+- @more_exports: Increase our exports of cargo.
+- @promote_germany: Promote Germany's shipping lines for tourism.
+
+@more_exports
+subtitle: This will increase international cooperation.
+on-arrival: exports += 1; rural_spd -= 5;
+
+As we increase the amount we export, the economy grows, as does international cooperation. Rural farmers, however, oppose this.
+
+@promote_germany
+subtitle: Tourism will bring more money to our economy.
+on-arrival: tourism += 1; unemployed -= 3;
+
+As more people are exposed to Germany's landmarks, our tourism numbers increase. The new money flowing into the country helps us develop. The growth of the tourism industry also allows for more people to be employed.
+
+@air
+subtitle: Expand the national airline and aviation industry.
+
+Not only does Germany have a national airline, Deutsche Luft Hansa, but we also have several manufacturers and an airship industry.
+
+- @promote_planes: Promote Deutsche Luft Hansa and our plane manufacturers.
+- @promote_airships: Promote our airship industry.
+
+@promote_planes
+subtitle: Promote the fixed-wing industry over the airship one.
+on-arrival: planes += 1
+
+We are slowly promoting fixed-wing flight over airship flight. [? if hindenburg_disaster > 0: In the aftermath of the Hindenbutg disaster, public opinion is turning against them regardless. ?]
+
+@promote_airships
+view-if: hindenburg_disaster != 1
+unavailable-subtitle: This is practically impossible after the Hindenburg disaster.
+subtitle: Promote airship flight over fixed-wing flight.
+on-arrival: airships += 1;
+
+We promote airship flying over fixed-wing flying.
+
+@road
+
+The nation's roads are in constant need of change.
+
+- @autobahns: Expand the highway network.
+- @evs: Encourage electric car use.
+- @discourage: Discourage car use overall.
+
+@autobahns
+on-arrival: autobahns += 1;
+
+We expand the nation's highway system, including a new type of highway with no speed limits known as the 'Autobahn'.
+
+@evs
+view-if: year > 1957
+on-arrival: evs += 1; old_middle_spd -= 5;
+
+Environmentalists see this as a necessary step, and more people switch to electric vehicles.
+
+@discourage
+view-if: year > 1959 and reichsbahn > 2
+on-arrival: cars_discourage = 1; reichsbahn += 1;
+
+We have discouraged the use of cars due to environmental concerns, prompting people to switch to public transport instead. Thanks to our developed network, this change is not as hard as it could have been.
+
+@construction
+view-if: year < 1936 and berlin_host = 1
+
+With the upcoming Olympics in Berlin, we need to build to prepare.
+
+- @hotels: Build hotels to prepare for the incoming visitors.
+- @stadium: Build a new stadium in Berlin in preparation.
+- @training: Build training facilities for our athletes.
+- @airport: Build a new airport in Berlin.
+
+@hotels
+choose-if: resources > 0
+unavailable-subtitle: Not enough resources.
+subtitle: -1 resources.
+on-arrival: resources -= 1; berlin_hotels = 1; unemployed -= 2;
+
+The hotels are built, meaning there will be less pressure on existing ones during the Olympics. Their construction and need for staff also reduces unemployment.
+
+@stadium
+choose-if: resources > 1
+unavailable-subtitle: Not enough resources.
+subtitle: -2 resources.
+on-arrival: berlin_stadium = 1; unemployed -= 3; resources -= 2
+
+A new, grand stadium is built in Berlin, with a capacity of tens of thousands. The stadium boosts morale, and unemployment is reduced.
+
+@training
+choose-if: resources > 0
+unavailable-subtitle: Not enough resources.
+subtitle: -1 resources.
+on-arrival: resources -= 1; berlin_training = 1; unemployed -= 2;
+
+The new facilities ensure our athletes are well-prepared for the Olympics.
+
+@airport
+choose-if: resources > 1
+unavailable-subtitle: Not enough resources.
+subtitle: The current site at Tempelhof is inadequate. -2 resources.
+on-arrival: resources -= 2; berlin_schonefeld = 1; unemployed -= 3;
+
+A new airport starts construction on a site to the south of Berlin, and is expected to be completed in time for the Olympics.
