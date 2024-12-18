@@ -19,7 +19,7 @@ While we have not historically been in control of transport, we can now do what 
 - @easy_discard
 
 @rail
-choose-if: reparations_stopped != 1
+choose-if: reparations_stopped = 1
 unavailable-subtitle: We do not have enough control over the railways.
 
 The Reichsbahn is Germany's rail company. We can choose what we do with it.
