@@ -268,7 +268,7 @@ Scandinavia has accepted our invitation. As one of Europe's more peaceful and li
 
 @spain
 choose-if: year > 1941 and spain_cw_over = 1 and republican_victory = 1 and francoist_victory = 0 and spain_eu_support > 0 and spain_support < 1
-unavailable-subtitle: [? if year < 1936 : The government is too unstable. ?] [? if spain_cw = 1 and spain_cw_over = 0 : The ongoing civil war makes this impossible. ?] [? if francoist_victory = 1 : We cannot invite a dictator into the EU. ?] [? if republican_victory = 1 and year < 1942 : They are undergoing reconstruction and not ready to join. ?] [? if spain_eu_support < 1 : Our EU partners consider Spain too radical. ?]
+unavailable-subtitle: [? if year < 1936 : The government is too unstable. ?] [? if spain_cw = 1 and spain_cw_over = 0 : The ongoing civil war makes this impossible. ?] [? if francoist_victory = 1 : We cannot invite a dictator into the EU. ?] [? if republican_victory = 1 and year < 1942 : They are undergoing reconstruction and not ready to join. ?] [? if spain_eu_support < 1 and spain_cw_over = 1 : Our EU partners consider Spain too radical. ?]
 max-visits: 1
 on-arrival: spain_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
 
@@ -298,7 +298,7 @@ Greece has accepted our invitation. With them still being in a poor economic sta
 
 @portugal
 choose-if: disband_military > 1
-unavailable-subtitle: [if year < 1933 : The Ditadura Nacional is not willing to cooperate with socialists. ?] [? if year > 1932 : The Estado Novo is unwilling to cooperate with socialists. ?]
+unavailable-subtitle: [? if year < 1933 : The Ditadura Nacional is not willing to cooperate with socialists. ?] [? if year > 1932 : The Estado Novo is unwilling to cooperate with socialists. ?]
 max-visits: 1
 on-arrival: portugal_eu = 1; eu_expansion += 1; pro_republic += 5; nationalism -= 5; pacifism += 1;
 
