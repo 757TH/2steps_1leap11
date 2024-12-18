@@ -1,1 +1,13 @@
+title: President Braun resigns
+subtitle: He has gotten tired...
+view-if: president = "Braun" and year = 1941 and month = 3
+max-visits: 1
+on-arrival: president = "Großmann (acting)"
+tags: event
+new-page: true
 
+= President Braun resigns
+
+President Braun has resigned. He says that he has gotten too old and can no longer lead the country. Supreme Court chief justice Hermann Großmann will lead as President until next month's election.
+
+- @root: May he have a good retirement...
