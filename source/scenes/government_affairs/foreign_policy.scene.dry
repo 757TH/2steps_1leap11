@@ -24,6 +24,8 @@ What should our foreign policy priority be?
 - @european_union
 - @european_union_2
 - @eu_expansion
+- @spain_cw_support
+- @mussolini_rebels
 - @concordat_negotiate
 - @concordat
 - @root: Do not enact any policies for now.
@@ -193,7 +195,21 @@ achievement: reichskonkordat
 
 We have successfully signed a Concordat between Germany and the Roman Catholic Church! This treaty defines a formal relationship between the Church and the German state, guaranteeing freedom of worship for Catholics, and the right of the church to appoint their own clergy. Catholics in Germany are pleased, as are their representatives in the Center Party.
 
+@spain_cw_support
+title: Support the Spanish Republicans.
+subtitle: They will need our help if they are to triumph in the civil war. -1 resources.
+view-if: spain_cw = 1 and spain_cw_over = 0 and resources > 0
+on-arrival: spain_support += 1 if spain_eu_support < 1; spain_eu_support += 1 if spain_church_centrist = 1; spain_eu_support += 1 if spain_centrist = 1; spain_franco = 0; resources -= 1;
 
+We have sent support to the Spanish Republicans. They are grateful for our support and promise to collaborate if they triumph.
+
+@mussolini_rebels
+title: Support resistance against Mussolini's regime.
+subtitle: Can he be overthrown?
+view-if: mussolini_overthrown != 1 and abyssinia_long_war = 1 and resources > 0
+on-arrival: mussolini_unrest = 1; resources -= 1;
+
+With the ongoing war in Abyssinia, resistance against Mussolini's leadership is rising in Italy. We can help accelerate this and perhaps contribute to his overthrow.
 
 @european_union
 title: Take steps to form a "European Union".
@@ -221,7 +237,7 @@ Fascist Italy remains a problem, and the Soviet Union also lies outside the syst
 
 @eu_expansion
 title: Expand the European Union.
-view-if: eu = 1
+view-if: eu = 1 and eu_expansion < 11
 
 While we have formed an European Union, it does not yet cover the whole continent. We can solve this by expanding it.
 
