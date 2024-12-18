@@ -10,7 +10,7 @@ new-page: true
 Gustav Bauer was one of the first chancellors. [? if transport_minister_party = "SPD": He is also the current transportation minister. ?]
 
 - @transport: Transport policy.
-- @factions: Strengthen a faction to reduce its dissent.
+- @disunity: Reduce faction dissent.
 - @root: Return to main.
 
 @transport
@@ -20,8 +20,8 @@ unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +
 on-arrival: advisor_action_timer = 6; transport_policy_timer -= 6
 go-to: transport_policy
 
-@factions
-subtitle: We can choose to increase the strength of a faction which is currently unhappy with us.
+@disunity
+subtitle: Reduce dissent across the party.
 choose-if: advisor_action_timer <= 0
 unavailable-subtitle: [+ advisor_action_timer +] months before next advisor action.
 on-arrival: advisor_action_timer = 6
