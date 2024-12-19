@@ -1314,7 +1314,7 @@ Gustav Bauer of the SPD has been appointed Transport Minister.
 @postal
 title: Postal Affairs Ministry
 subtitle: This ministry is not our usual domain.
-unavailabkle-subtitle: We do not have enough leverage.
+unavailable-subtitle: We do not have enough leverage.
 tags: mins_1928
 choose-if: leverage >= 15
 view-if: postal_minister_party != "SPD"
