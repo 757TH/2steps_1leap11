@@ -1276,7 +1276,7 @@ Gustav Radbruch of the SPD has been appointed Justice Minister.
 
 @foreign
 title: Foreign Ministry
-subtitle: This is usually the domain of Gustav Stresemann of the DVP.
+subtitle: This is usually the domain of the DVP.
 unavailable-subtitle: We do not have enough leverage.
 tags: mins_1928
 choose-if: leverage >= 10 
@@ -1310,6 +1310,18 @@ on-arrival: leverage -= 10; transport_minister_party = "SPD"; transport_minister
 go-to: ministries
 
 Gustav Bauer of the SPD has been appointed Transport Minister.
+
+@postal
+title: Postal Affairs Ministry
+subtitle: This ministry is not our usual domain.
+unavailabkle-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 15
+view-if: postal_minister_party != "SPD"
+on-arrival: leverage -= 15; postal_minister_party = "SPD"; postal_minister = "Scheidemann"
+go-to: ministries
+
+Philipp Scheidemann of the SPD has been appointed Minister of Postal Affairs.
 
 @reichswehr
 title: Reichswehr Ministry
@@ -1385,6 +1397,13 @@ go-to: ministries
 title: Drop the Transport Ministry.
 view-if: transport_minister_party = "SPD"
 on-arrival: transport_minister_party = "Z"; transport_minister = "von Guérard"; leverage += 10;
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_postal
+title: Drop the Postal Affairs Ministry.
+view-if: postal_minister_party = "SPD"
+on-arrival: postal_minister_party = "I"; postal_minister = "von Eltz-Rübenach"; leverage += 15; postal_minister_party = "BVP" if in_grand_coalition; postal_minister = "Schätzel" if in_grand_coalition;
 tags: drop_mins_1928
 go-to: ministries
 
