@@ -127,6 +127,7 @@ With the upcoming Olympics in Berlin, we need to build to prepare.
 
 @hotels
 choose-if: resources > 0
+view-if: berlin_hotels != 1
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources.
 on-arrival: resources -= 1; berlin_hotels = 1; unemployed -= 2;
@@ -135,6 +136,7 @@ The hotels are built, meaning there will be less pressure on existing ones durin
 
 @stadium
 choose-if: resources > 1
+view-if: berlin_stadium != 1
 unavailable-subtitle: Not enough resources.
 subtitle: -2 resources.
 on-arrival: berlin_stadium = 1; unemployed -= 3; resources -= 2
@@ -143,6 +145,7 @@ A new, grand stadium is built in Berlin, with a capacity of tens of thousands. T
 
 @training
 choose-if: resources > 0
+view-if: berlin_training != 1
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources.
 on-arrival: resources -= 1; berlin_training = 1; unemployed -= 2;
@@ -151,6 +154,7 @@ The new facilities ensure our athletes are well-prepared for the Olympics.
 
 @airport
 choose-if: resources > 1
+view-if: berlin_schonefeld != 1
 unavailable-subtitle: Not enough resources.
 subtitle: The current site at Tempelhof is inadequate. -2 resources.
 on-arrival: resources -= 2; berlin_schonefeld = 1; unemployed -= 3;
